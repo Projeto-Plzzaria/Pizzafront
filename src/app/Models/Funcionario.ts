@@ -1,5 +1,6 @@
 import { Cargo } from "./Cargo"
-export class Funcionario{
+import { Pessoa } from "./Pessoa";
+export class Funcionario extends Pessoa{
     cargo!:Cargo;
     email!:String;
 }

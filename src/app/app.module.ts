@@ -7,10 +7,14 @@ import { BannerComponent } from './Components/banner/banner.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'; // Importe o módulo NgbModule aqui
 import { CollapseModule } from 'ngx-bootstrap/collapse'; // Importe o módulo CollapseModule do ngx-bootstrap
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { ClienteCadastroComponent } from './Components/cliente-cadastro/cliente-cadastro.component';
+import { FuncionarioComponent } from './Components/funcionario-Cadastro/funcionario.component';
+import { BebidaComponent } from './Components/bebida/bebida.component';
+import { ComidaComponent } from './Components/comida/comida.component';
 
 
 @NgModule({
-  declarations: [AppComponent, NavComponent, BannerComponent],
+  declarations: [AppComponent, NavComponent, BannerComponent, ClienteCadastroComponent, FuncionarioComponent, BebidaComponent, ComidaComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

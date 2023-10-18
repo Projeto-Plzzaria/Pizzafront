@@ -1,4 +1,5 @@
 import { Endereco } from "./Endereco"
-export class Cliente{
+import { Pessoa } from "./Pessoa";
+export class Cliente extends Pessoa{
     endereco!:Endereco[];
 }
