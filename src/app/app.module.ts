@@ -11,6 +11,12 @@ import { ClienteCadastroComponent } from './Components/cliente-cadastro/cliente-
 import { FuncionarioComponent } from './Components/funcionario-Cadastro/funcionario.component';
 import { BebidaComponent } from './Components/bebida/bebida.component';
 import { ComidaComponent } from './Components/comida/comida.component';
+import {MatTableModule} from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
+import { HttpClientModule } from '@angular/common/http';
+
+
+
 
 
 @NgModule({
@@ -19,6 +25,9 @@ import { ComidaComponent } from './Components/comida/comida.component';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+    MatTableModule,
+    MatCardModule,
+    HttpClientModule,
     CollapseModule.forRoot(), // Adicione o módulo CollapseModule aqui
     BsDropdownModule.forRoot(), // Adicione o módulo BsDropdownModule aqui
   ],

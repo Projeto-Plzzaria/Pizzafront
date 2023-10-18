@@ -6,12 +6,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class BebidaService {
-  private baseUrl = 'http://localhost:8081/api/bebida'; 
+  private baseUrl = 'http://localhost:8080/api/Bebida'; 
 
   constructor(private http: HttpClient) { }
 
   listar(): Observable<any[]> {
-    const url = `${this.baseUrl}/listar`;
+    const url = `${this.baseUrl}/lista`;
     return this.http.get<any[]>(url);
   }
 
