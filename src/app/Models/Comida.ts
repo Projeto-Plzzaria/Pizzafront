@@ -1,5 +1,5 @@
 import { Tamanho } from "./Tamanho"
 export class Comida{
-    sabor!:String;
+    sabor!:String[];
     tamanho!:Tamanho;
 }

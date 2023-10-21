@@ -15,6 +15,6 @@ export class BebidaComponent {
   constructor(private bebidaService: BebidaService){
     this.bebidas = this.bebidaService.listar();
   }
-
+  
 
 }
