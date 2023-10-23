@@ -6,12 +6,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class EnderecoService {
-  private baseUrl = 'http://localhost:8081/api/endereco'; 
+  private baseUrl = 'http://localhost:8080/api/Endereco'; 
 
   constructor(private http: HttpClient) { }
 
   listar(): Observable<any[]> {
-    const url = `${this.baseUrl}/listar`;
+    const url = `${this.baseUrl}/lista`;
     return this.http.get<any[]>(url);
   }
 

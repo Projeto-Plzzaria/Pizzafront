@@ -14,13 +14,14 @@ import { ComidaComponent } from './Components/comida/comida.component';
 import {MatTableModule} from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
+import { EnderecosComponent } from './Components/enderecos/enderecos.component';
 
 
 
 
 
 @NgModule({
-  declarations: [AppComponent, NavComponent, BannerComponent, ClienteCadastroComponent, FuncionarioComponent, BebidaComponent, ComidaComponent],
+  declarations: [AppComponent, NavComponent, BannerComponent, ClienteCadastroComponent, FuncionarioComponent, BebidaComponent, ComidaComponent, EnderecosComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -5,11 +5,13 @@ import { FuncionarioComponent } from './Components/funcionario-Cadastro/funciona
 import { BannerComponent } from './Components/banner/banner.component';
 import { BebidaComponent } from './Components/bebida/bebida.component';
 import { ComidaComponent } from './Components/comida/comida.component';
+import { EnderecosComponent } from './Components/enderecos/enderecos.component';
 const routes: Routes = [  { path: '', component: BannerComponent },
 { path: 'cliente', component: ClienteCadastroComponent },
 { path: 'funcionario', component: FuncionarioComponent },
 { path: 'bebida', component: BebidaComponent },
-{ path: 'comida', component: ComidaComponent }];
+{ path: 'comida', component: ComidaComponent },
+{path: 'endereco', component: EnderecosComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

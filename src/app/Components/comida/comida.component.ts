@@ -10,11 +10,13 @@ import { ComidaService } from 'src/app/Service/Comida/comida.service';
 })
 export class ComidaComponent {
   comidas: Observable<Comida[]>;
-  displayedColumns = ['sabor', 'tamanho'];
+  displayedColumns = ['ingredientes', 'tamanho'];
 
-  constructor(private comidaService: ComidaService){
+  constructor(private comidaService: ComidaService) {
     this.comidas = this.comidaService.listar();
-  }
-
+    this.comidas.subscribe(data => {
+        console.log(data);
+    });
+}
 }
 
