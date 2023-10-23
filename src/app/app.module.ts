@@ -17,10 +17,11 @@ import { ComidaListComponent } from './Components/Listar/comida-list/comida-list
 import { BebidaListComponent } from './Components/Listar/bebida-list/bebida-list.component';
 import { FuncionarioListComponent } from './Components/Listar/funcionario-list/funcionario-list.component';
 import { ClienteListComponent } from './Components/Listar/cliente-list/cliente-list.component';
+import { PedidoComponent } from './Components/pedido/pedido.component';
 
 
 @NgModule({
-  declarations: [AppComponent, NavComponent, BannerComponent, ClienteCadastroComponent, FuncionarioComponent, BebidaComponent, ComidaComponent, EnderecoComponent, PedidosListComponent, ComidaListComponent, BebidaListComponent, FuncionarioListComponent, ClienteListComponent],
+  declarations: [AppComponent, NavComponent, BannerComponent, ClienteCadastroComponent, FuncionarioComponent, BebidaComponent, ComidaComponent, EnderecoComponent, PedidosListComponent, ComidaListComponent, BebidaListComponent, FuncionarioListComponent, ClienteListComponent, PedidoComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
