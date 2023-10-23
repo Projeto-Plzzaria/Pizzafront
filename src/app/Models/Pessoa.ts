@@ -1,4 +1,4 @@
 export class Pessoa{
-    nome!:String;
-    numero!:String;
+    nome!:string;
+    numero!:string;
 }

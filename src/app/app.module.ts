@@ -8,29 +8,35 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap'; // Importe o módulo Ngb
 import { CollapseModule } from 'ngx-bootstrap/collapse'; // Importe o módulo CollapseModule do ngx-bootstrap
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ClienteCadastroComponent } from './Components/cliente-cadastro/cliente-cadastro.component';
-import { FuncionarioComponent } from './Components/funcionario-Cadastro/funcionario.component';
+import { FormsModule } from '@angular/forms';
 import { BebidaComponent } from './Components/bebida/bebida.component';
 import { ComidaComponent } from './Components/comida/comida.component';
-import {MatTableModule} from '@angular/material/table';
-import { MatCardModule } from '@angular/material/card';
+ 
 import { HttpClientModule } from '@angular/common/http';
 import { EnderecosComponent } from './Components/enderecos/enderecos.component';
+import { BebidaCadastroComponent } from './Components/post/bebida-cadastro/bebida-cadastro.component';
+import { ComidaCadastroComponent } from './Components/post/comida-cadastro/comida-cadastro.component';
+import { FuncionarioCadastroComponent } from './Components/post/funcionario-cadastro/funcionario-cadastro.component';
+import { EnderecoCadastroComponent } from './Components/post/endereco-cadastro/endereco-cadastro.component';
+import { PedidoCadastroComponent } from './Components/post/pedido-cadastro/pedido-cadastro.component';
+//import { MatCardModule } from '@angular/material/card';
+//import { MatTableModule } from '@angular/material/table';
+
+ 
 
 
 
-
-
+ 
 @NgModule({
-  declarations: [AppComponent, NavComponent, BannerComponent, ClienteCadastroComponent, FuncionarioComponent, BebidaComponent, ComidaComponent, EnderecosComponent],
+  declarations: [AppComponent, NavComponent, BannerComponent, ClienteCadastroComponent, BebidaComponent, BebidaComponent, ComidaComponent, EnderecosComponent, BebidaCadastroComponent, ComidaCadastroComponent, FuncionarioCadastroComponent, EnderecoCadastroComponent, PedidoCadastroComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    MatTableModule,
-    MatCardModule,
     HttpClientModule,
-    CollapseModule.forRoot(), // Adicione o módulo CollapseModule aqui
-    BsDropdownModule.forRoot(), // Adicione o módulo BsDropdownModule aqui
+    FormsModule,
+    CollapseModule.forRoot(),
+    BsDropdownModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -4,7 +4,7 @@ import { Funcionario } from "./Funcionario"
 import { Cliente } from "./Cliente"
 
 export class Pedido{
-    bebida!:Bebida;
+    bebida!:Bebida[];
     comida!:Comida;
     funcionario!:Funcionario;
     cliente!:Cliente;
