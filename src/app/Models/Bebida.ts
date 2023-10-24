@@ -1,5 +1,5 @@
-import { Tamanhob } from "./Tamanhob"
-export class Bebida{
-    sabor!:String;
-    tamanhob!:Tamanhob;
+import { Tamanhob } from './Tamanhob';
+export class Bebida {
+  sabor!: String;
+  tamanho!: String;
 }
