@@ -1,0 +1,34 @@
+
+
+    Clientes Disponiveis
+  <table class="mat-elevation-z8">
+  
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="cliente">
+        <th mat-header-cell *matHeaderCellDef> Cliente </th>
+        <td mat-cell *matCellDef="let endereco"> {{endereco.cliente}} </td>
+      </ng-container>
+    <ng-container matColumnDef="rua">
+      <th mat-header-cell *matHeaderCellDef> Rua </th>
+      <td mat-cell *matCellDef="let endereco"> {{endereco.rua}} </td>
+    </ng-container>
+    <ng-container matColumnDef="numero">
+        <th mat-header-cell *matHeaderCellDef> Numero </th>
+        <td mat-cell *matCellDef="let endereco"> {{endereco.numero}} </td>
+      </ng-container>
+      <ng-container matColumnDef="bairro">
+        <th mat-header-cell *matHeaderCellDef> Bairro </th>
+        <td mat-cell *matCellDef="let endereco"> {{endereco.bairro}} </td>
+      </ng-container>
+  
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  
+  
+  

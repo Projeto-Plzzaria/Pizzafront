@@ -1,0 +1,12 @@
+<form (ngSubmit)="salvar()">
+    <div class="mb-3">
+        <label for="ingredientes" class="form-label">ingredientes:</label>
+        <input type="text" class="form-control"  name="teste"
+            [(ngModel)]="comida.ingredientes">
+    </div>
+    <div class="mb-3">
+        <label for="tamanhob" class="form-label">tamanho:</label>
+        <input type="number" class="form-control" name="teste" [(ngModel)]="comida.tamanho">
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+</form>

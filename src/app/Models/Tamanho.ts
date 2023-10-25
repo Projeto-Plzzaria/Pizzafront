@@ -1,3 +1,3 @@
 export enum Tamanho{
-    tamanho2
+    tamanho2,L_2
 }

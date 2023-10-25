@@ -1,19 +1,27 @@
-<div class="container mt-5">
-    <form>
-      <!-- Campos para Pessoa -->
-      <div class="mb-3">
-        <div class="row justify-content-center">
-          <div class="col-md-4 mb-3">
-            <input type="text" placeholder="Sabor" aria-label="Sabor" class="form-control"  />
-          </div>
-          <div class="col-md-4 mb-3">
-            <input type="text" placeholder="Tamanho Enum" aria-label="Tamanho" class="form-control"  />
-          </div>
-        </div>
-      </div>
-  
 
-     
-    </form>
-  </div>
-  
+
+  Clientes Disponiveis
+<table  class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Name Column -->
+<ng-container matColumnDef="ingredientes">
+    <th mat-header-cell *matHeaderCellDef> Sabores </th>
+    <td mat-cell *matCellDef="let comida"> 
+        {{comida.ingredientes ? comida.ingredientes.join(', ') : ''}}
+    </td>
+</ng-container>
+  <ng-container matColumnDef="tamanho">
+    <th mat-header-cell *matHeaderCellDef> Tamanho </th>
+    <td mat-cell *matCellDef="let comida"> {{comida.tamanho}} </td>
+  </ng-container>
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+
+
