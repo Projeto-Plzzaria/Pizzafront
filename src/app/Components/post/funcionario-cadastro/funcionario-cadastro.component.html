@@ -2,16 +2,16 @@
 <form (ngSubmit)="salvar()">
     <div class="mb-3">
         <label for="Nome" class="form-label">Nome:</label>
-        <input type="text" class="form-control" name="exampleInputText1" aria-describedby="emailHelp"
+        <input type="text" class="form-control" name="exampleInputText1" aria-describedby="emailHelp" name="teste"
             [(ngModel)]="funcionario.nome">
     </div>
     <div class="mb-3">
         <label for="numero" class="form-label">numero:</label>
-        <input type="text" class="form-control" n [(ngModel)]="funcionario.numero">
+        <input type="text" class="form-control" name="teste" [(ngModel)]="funcionario.numero">
     </div>
     <div class="mb-3">
         <label for="email" class="form-label">email:</label>
-        <input type="text" class="form-control" [(ngModel)]="funcionario.email">
+        <input type="text" class="form-control" name="teste" [(ngModel)]="funcionario.email">
     </div>
     <button type="submit" class="btn btn-primary">Salvar</button>
 </form>

@@ -1,16 +1,16 @@
 <form (ngSubmit)="salvar()">
     <div class="mb-3">
         <label for="nome" class="form-label">nome:</label>
-        <input type="text" class="form-control"  
+        <input type="text" class="form-control"  name="teste"
             [(ngModel)]="cliente.nome">
     </div>
     <div class="mb-3">
         <label for="numero" class="form-label">numero:</label>
-        <input type="number" class="form-control"  [(ngModel)]="cliente.numero">
+        <input type="number" class="form-control" name="teste" [(ngModel)]="cliente.numero">
     </div>
     <div class="mb-3">
         <label for="endereco" class="form-label">endereco:</label>
-        <input type="number" class="form-control"  [(ngModel)]="cliente.endereco">
+        <input type="number" class="form-control" name="teste" [(ngModel)]="cliente.endereco">
     </div>
     <button type="submit" class="btn btn-primary">Salvar</button>
 </form>
