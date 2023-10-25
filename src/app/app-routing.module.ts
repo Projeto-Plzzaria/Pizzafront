@@ -5,13 +5,16 @@ import { ClienteCadastroComponent } from './Components/cliente-cadastro/cliente-
 import { BannerComponent } from './Components/banner/banner.component';
 import { BebidaComponent } from './Components/bebida/bebida.component';
 import { ComidaComponent } from './Components/comida/comida.component';
+
 import { EnderecosComponent } from './Components/enderecos/enderecos.component';
 
 import { BebidaCadastroComponent } from './Components/post/bebida-cadastro/bebida-cadastro.component';
+
 const routes: Routes = [  { path: '', component: BannerComponent },
 { path: 'cliente', component: ClienteCadastroComponent },
 { path: 'bebida', component: BebidaComponent },
 { path: 'comida', component: ComidaComponent },
+
 {path: 'endereco', component: EnderecosComponent},
 { path: 'bebidaadd', component: BebidaCadastroComponent },];
 
