@@ -1,9 +1,48 @@
+
+
+<section class="flex items-center justify-center flex-col gap-5">
+    <h1 class="text-xl font-bold">Cliente</h1>
+
+
+    <select [compareWith]="byId" class="w-80" [(ngModel)]="pedido.cliente" name="cliente">
+      <option value="0">Escolha</option>
+      <option
+        *ngFor="let cliente of listaCliente"
+        class="w-80"
+        [ngValue]="cliente"
+      >
+        Nome: {{ cliente.nome }} 
+      </option>
+    </select>
+
+
+
+    <section  class="flex items-center justify-center flex-col gap-5">
+        <h1 class="text-xl font-bold">Funcionario</h1>
+        <select [compareWith]="byId" class="w-80" [(ngModel)]="pedido.funcionario" name="funcionario">
+          <option value="0">Escolha</option>
+          <option
+            *ngFor="let funcionario of listaFuncionario"
+            class="w-80"
+            [ngValue]="funcionario"
+          >
+            Nome: {{ funcionario.nome }} 
+          </option>
+        </select>
+    
+    
+
+
+
 <form (ngSubmit)="salvar()">
     <div class="mb-3">
         <label for="exampleInputText1" class="form-label">Observações:</label>
         <input type="text" class="form-control" name="exampleInputText1" aria-describedby="emailHelp"
             [(ngModel)]="pedido.obs">
     </div>
+
+
+
 
     <button type="button" class="btn btn-primary" (click)="lancar(modal1)">Lançar bebida</button> 
 
@@ -12,6 +51,7 @@
             <tr>
                 <th scope="col">#ID</th>
                 <th scope="col">Nome</th>
+                <th scope="col">tamanho</th>
                 <th scope="col">Valor</th>
                 <th scope="col">Ações</th>
             </tr> 
@@ -21,10 +61,12 @@
                 <th scope="row">{{ produto.id }}</th>
                 <td> {{ produto.sabor }} </td>
                 <td> {{ produto.tamanho }} </td>
+                <td> {{ produto.valor }} </td>
                 <td> <button type="button" class="btn btn-primary" (click)="excluir(produto,i)">Excluir</button> </td>
             </tr>
         </tbody>
     </table>
+
     <button type="button" class="btn btn-primary" (click)="lancar(modal2)">Lançar comida</button> 
     <table class="table table-striped">
         <thead>
@@ -38,7 +80,7 @@
         <tbody>
             <tr *ngFor="let produtos of pedido.comida; let i = index">
                 <th scope="row">{{ produtos.id }}</th>
-                <td> {{ produtos.ingredientes }} </td>
+                <td> {{ produtos.sabores }} </td>
                 <td> {{ produtos.tamanho }} </td>
                 <td> <button type="button" class="btn btn-primary" (click)="excluic(produtos,i)">Excluir</button> </td>
             </tr>
@@ -48,7 +90,10 @@
     <button type="submit" class="btn btn-primary">Salvar</button>
 </form>
 
-
+<div class="mt-5">
+    <h3>Preço Total</h3>
+    <p>{{ calcularPrecoTotal() | currency: 'BRL' }}</p>
+  </div>
 
 
 <ng-template #modal1 let-modal>

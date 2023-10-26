@@ -15,7 +15,7 @@
               <tbody>
                   <tr *ngFor="let produto of lista; let i = index">
                       <th scope="row">{{ produto.id }}</th>
-                      <td> {{ produto.ingredientes }} </td>
+                      <td> {{ produto.sabores }} </td>
                       <td> {{ produto.tamanho  }} </td>
                       <td *ngIf="!modoLancamento" > <button type="button" class="btn btn-primary" (click)="editar(modal1, produto, i)">Editar</button> </td>
                       <td *ngIf="modoLancamento" > <button type="button" class="btn btn-primary" (click)="lancamento( produto)">Lançar</button> </td>

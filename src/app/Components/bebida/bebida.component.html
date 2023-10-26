@@ -8,7 +8,8 @@
                   <tr>
                       <th scope="col">#ID</th>
                       <th scope="col">Nome</th>
-                      <th scope="col">Idade</th>
+                      <th scope="col">tamanho</th>
+                      <th scope="col">valor</th>
                       <th scope="col">Ações</th>
                   </tr>
               </thead>
@@ -17,6 +18,7 @@
                       <th scope="row">{{ produto.id }}</th>
                       <td> {{ produto.sabor }} </td>
                       <td> {{ produto.tamanho  }} </td>
+                      <td> {{ produto.valor }} </td>
                       <td *ngIf="!modoLancamento" > <button type="button" class="btn btn-primary" (click)="editar(modal1, produto, i)">Editar</button> </td>
                       <td *ngIf="modoLancamento" > <button type="button" class="btn btn-primary" (click)="lancamento( produto)">Lançar</button> </td>
                   </tr>

@@ -4,4 +4,5 @@ export class Bebida {
   id!:number;
   sabor!: String;
   tamanho!: String;
+  valor!:number;
 }

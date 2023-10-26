@@ -8,6 +8,8 @@
                 <thead>
                     <tr>
                         <th scope="col">#ID</th>
+                        <th scope="col">cliente</th>
+                        <th scope="col">funcionario</th>
                         <th scope="col">Obs</th>
                         <th scope="col">Ações</th>
                     </tr>
@@ -15,7 +17,11 @@
                 <tbody>
                     <tr *ngFor="let pedido of lista; let i = index">
                         <th scope="row">{{ pedido.id }}</th>
+                        <td> <span *ngIf="pedido.cliente != null"> {{ pedido.cliente.nome }} </span> </td>
+                        <td> <span *ngIf="pedido.funcionario != null"> {{ pedido.funcionario.nome }} </span> </td>
                         <td> {{ pedido.obs }} </td>
+                       
+                      
                         <td> <button type="button" class="btn btn-primary" (click)="editar(modal1, pedido, i)">Editar</button> </td>
                     </tr>
                 </tbody>
