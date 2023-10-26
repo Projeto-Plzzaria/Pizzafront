@@ -4,13 +4,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './Components/nav/nav.component';
 import { BannerComponent } from './Components/banner/banner.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap'; // Importe o módulo NgbModule aqui
-import { CollapseModule } from 'ngx-bootstrap/collapse'; // Importe o módulo CollapseModule do ngx-bootstrap
+import { NgbCollapseModule, NgbModule } from '@ng-bootstrap/ng-bootstrap'; 
+import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ClienteCadastroComponent } from './Components/cliente-cadastro/cliente-cadastro.component';
 import { FormsModule } from '@angular/forms';
 import { BebidaComponent } from './Components/bebida/bebida.component';
 import { ComidaComponent } from './Components/comida/comida.component';
+
  
 import { HttpClientModule } from '@angular/common/http';
 import { EnderecosComponent } from './Components/enderecos/enderecos.component';
@@ -25,21 +26,26 @@ import { PedidoComponent } from './Components/pedido/pedido.component';
 //import { MatCardModule } from '@angular/material/card';
 //import { MatTableModule } from '@angular/material/table';
 
+
  
 
 
 
  
 @NgModule({
+
   declarations: [AppComponent, NavComponent, BannerComponent, ClienteCadastroComponent, BebidaComponent, BebidaComponent, ComidaComponent, EnderecosComponent, BebidaCadastroComponent, ComidaCadastroComponent, FuncionarioCadastroComponent, EnderecoCadastroComponent, PedidoCadastroComponent, PedidoComponent],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+
     HttpClientModule,
     FormsModule,
     CollapseModule.forRoot(),
     BsDropdownModule.forRoot(),
+
   ],
   providers: [],
   bootstrap: [AppComponent],

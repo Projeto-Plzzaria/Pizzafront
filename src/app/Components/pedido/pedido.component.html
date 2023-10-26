@@ -1,3 +1,4 @@
+
 <div class="container">
     <h3 class="alert alert-primary">Listagem de pedidos!</h3>
    <button type="button" class="btn btn-primary" (click)="adicionar(modal1)">Adicionar</button> 
@@ -29,6 +30,7 @@
 
 
 
+
 <ng-template #modal1 let-modal>
     <div class="modal-header">
         <h4 class="modal-title">Modal title</h4>
@@ -36,7 +38,9 @@
     </div>
     <div class="modal-body">
        
+
         <app-pedido-cadastro [pedido]="objetoSelecionadoParaEdicao" (retorno)="addOuEditarPedido($event)" ></app-pedido-cadastro>
+
         
     </div>
     <div class="modal-footer">

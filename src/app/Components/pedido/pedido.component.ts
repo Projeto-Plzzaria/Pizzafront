@@ -1,8 +1,10 @@
+
 import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { Pedido } from 'src/app/Models/Pedido';
 import { Bebida } from 'src/app/Models/Bebida';
 import { PedidoService } from 'src/app/Service/Pedido/pedido.service';
+
 
 @Component({
   selector: 'app-pedido',
@@ -10,6 +12,7 @@ import { PedidoService } from 'src/app/Service/Pedido/pedido.service';
   styleUrls: ['./pedido.component.scss']
 })
 export class PedidoComponent {
+
 
   lista: Pedido[] = [];
 
@@ -73,6 +76,7 @@ export class PedidoComponent {
     this.modalService.dismissAll();
 
   }
+
 
 
 
