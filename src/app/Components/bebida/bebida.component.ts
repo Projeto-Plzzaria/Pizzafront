@@ -12,6 +12,7 @@ export class BebidaComponent {
 
   lista: Bebida[] = [];
 
+
   @Output() retorno = new EventEmitter<Bebida>();
   @Input() modoLancamento: boolean = false;
 

@@ -1,7 +1,8 @@
-import { Bast } from "./Bast";
-import { Tamanho } from "./Tamanho"
-export class Comida  {
-    id!:number;
-    ingredientes!:String;
-    tamanho!:Tamanho;
+import { Tamanho } from "./Tamanho";
+import { Sabores } from "./Sabores";
+
+export class Comida {
+    id!: number;
+    sabores!: Sabores[];
+    tamanho!: Tamanho;
 }

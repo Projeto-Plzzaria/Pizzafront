@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { Endereco } from 'src/app/Models/Endereco';
 import { EnderecoService } from 'src/app/Service/Endereco/endereco.service';
 
@@ -8,11 +7,43 @@ import { EnderecoService } from 'src/app/Service/Endereco/endereco.service';
   templateUrl: './enderecos.component.html',
   styleUrls: ['./enderecos.component.scss']
 })
-export class EnderecosComponent {
-  enderecos: Observable<Endereco[]>;
-  displayedColumns = ['cliente', 'rua', 'numero', 'bairro'];
-  
-  constructor(private enderecoService: EnderecoService) {
-    this.enderecos = this.enderecoService.listar();
+
+export class EnderecosComponent  implements OnInit {
+  enderecos: Endereco[] = [];
+  enderecoEmEdicao: Endereco | null = new Endereco();
+
+  constructor(private enderecoService: EnderecoService) {}
+
+  ngOnInit() {
+    this.enderecoService.listar().subscribe((data) => {
+      this.enderecos = data;
+    });
   }
+
+  editarEndereco(id: number): void {
+    this.enderecoService.getPorId(id).subscribe((enderecoRetornado) => {
+      this.enderecoEmEdicao = { ...enderecoRetornado };
+    });
+  }
+
+  salvarEdicao(): void {
+    if (this.enderecoEmEdicao) {
+      this.enderecoService.atualizar(this.enderecoEmEdicao.id, this.enderecoEmEdicao).subscribe(
+        (response) => {
+          this.enderecoEmEdicao = null;
+        },
+        (error) => {
+          console.error('Erro ao atualizar o cliente:', error);
+        }
+      );
+    }
+  }
+  cancelarEdicao(): void {
+    this.enderecoEmEdicao = null; // Cancela a edição e limpa o cliente em edição
+  }
+
+
+
+
 }
+
