@@ -10,7 +10,7 @@ import { EnderecoService } from 'src/app/Service/Endereco/endereco.service';
 
 export class EnderecosComponent  implements OnInit {
   enderecos: Endereco[] = [];
-  enderecoEmEdicao: Endereco | null = new Endereco();
+  enderecoEmEdicao: Endereco | null = null;
 
   constructor(private enderecoService: EnderecoService) {}
 

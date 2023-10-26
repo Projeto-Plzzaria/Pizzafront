@@ -1,26 +1,32 @@
-<div>
+<div class="container">
+  <h3 class="alert alert-primary">Listagem de produtos!</h3>
+  <button type="button" class="btn btn-primary">Adicionar</button>
+  <div class="row">
+    <div class="col-lg-12">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#ID</th>
+            <th scope="col">nome</th>
+            <th scope="col">numero</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cliente of clientes; let i = index">
+            <td scope="row">{{ cliente.id }}</td>
+            <td>{{ cliente.nome  }}</td>
+      
+            <td>{{ cliente.numero  }}</td>
+           
 
-  <div>
-    <h2>Clientes Disponíveis</h2>
-    <table class="custom-table">
-      <thead>
-        <tr>
-          <th>Nome</th>
-          <th>Número</th>
-          <th>Ação</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let cliente of clientes">
-          <td>{{ cliente.nome }}</td>
-          <td>{{ cliente.numero }}</td>
-          <td>
-            <button (click)="editarCliente(cliente.id)">Editar</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+
+            <td>
+              <button (click)="editarCliente(cliente.id)">Editar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
 
   <div *ngIf="clienteEmEdicao">
