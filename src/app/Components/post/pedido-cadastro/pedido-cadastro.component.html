@@ -1,11 +1,11 @@
-<!--<form (ngSubmit)="salvar()">
+<form (ngSubmit)="salvar()">
     <div class="mb-3">
         <label for="exampleInputText1" class="form-label">Observações:</label>
         <input type="text" class="form-control" name="exampleInputText1" aria-describedby="emailHelp"
             [(ngModel)]="pedido.obs">
     </div>
 
-    <button type="button" class="btn btn-primary" (click)="lancar(modal1)">Lançar produto</button> 
+    <button type="button" class="btn btn-primary" (click)="lancar(modal1)">Lançar bebida</button> 
 
     <table class="table table-striped">
         <thead>
@@ -14,19 +14,36 @@
                 <th scope="col">Nome</th>
                 <th scope="col">Valor</th>
                 <th scope="col">Ações</th>
-            </tr>
+            </tr> 
         </thead>
         <tbody>
-            <tr *ngFor="let produto of pedido.produtos; let i = index">
+            <tr *ngFor="let produto of pedido.bebida; let i = index">
                 <th scope="row">{{ produto.id }}</th>
-                <td> {{ produto.nome }} </td>
-                <td> {{ produto.valor }} </td>
+                <td> {{ produto.sabor }} </td>
+                <td> {{ produto.tamanho }} </td>
                 <td> <button type="button" class="btn btn-primary" (click)="excluir(produto,i)">Excluir</button> </td>
             </tr>
         </tbody>
     </table>
-
-
+    <button type="button" class="btn btn-primary" (click)="lancar(modal2)">Lançar comida</button> 
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#ID</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Valor</th>
+                <th scope="col">Ações</th>
+            </tr> 
+        </thead>
+        <tbody>
+            <tr *ngFor="let produtos of pedido.comida; let i = index">
+                <th scope="row">{{ produtos.id }}</th>
+                <td> {{ produtos.ingredientes }} </td>
+                <td> {{ produtos.tamanho }} </td>
+                <td> <button type="button" class="btn btn-primary" (click)="excluic(produtos,i)">Excluir</button> </td>
+            </tr>
+        </tbody>
+    </table>
 
     <button type="submit" class="btn btn-primary">Salvar</button>
 </form>
@@ -41,10 +58,25 @@
     </div>
     <div class="modal-body">
        
-        <app-produtoslist [modoLancamento]="true" (retorno)="retornoProdutosList($event)" ></app-produtoslist>
+        <app-bebida [modoLancamento]="true" (retorno)="retornoProdutosList($event)" ></app-bebida>
         
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
     </div>
-</ng-template>--> <h1>teste pedido apagado</h1>
+</ng-template>
+
+<ng-template #modal2 let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Modal title</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+       
+        <app-comida [modoLancamento]="true" (retorno)="retornoComidaList($event)" ></app-comida>
+        
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
+</ng-template>

@@ -19,6 +19,9 @@ import { ComidaCadastroComponent } from './Components/post/comida-cadastro/comid
 import { FuncionarioCadastroComponent } from './Components/post/funcionario-cadastro/funcionario-cadastro.component';
 import { EnderecoCadastroComponent } from './Components/post/endereco-cadastro/endereco-cadastro.component';
 import { PedidoCadastroComponent } from './Components/post/pedido-cadastro/pedido-cadastro.component';
+import { PedidoComponent } from './Components/pedido/pedido.component';
+
+
 //import { MatCardModule } from '@angular/material/card';
 //import { MatTableModule } from '@angular/material/table';
 
@@ -28,7 +31,7 @@ import { PedidoCadastroComponent } from './Components/post/pedido-cadastro/pedid
 
  
 @NgModule({
-  declarations: [AppComponent, NavComponent, BannerComponent, ClienteCadastroComponent, BebidaComponent, BebidaComponent, ComidaComponent, EnderecosComponent, BebidaCadastroComponent, ComidaCadastroComponent, FuncionarioCadastroComponent, EnderecoCadastroComponent, PedidoCadastroComponent],
+  declarations: [AppComponent, NavComponent, BannerComponent, ClienteCadastroComponent, BebidaComponent, BebidaComponent, ComidaComponent, EnderecosComponent, BebidaCadastroComponent, ComidaCadastroComponent, FuncionarioCadastroComponent, EnderecoCadastroComponent, PedidoCadastroComponent, PedidoComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

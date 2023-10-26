@@ -11,7 +11,8 @@ export class ComidaCadastroComponent {
 
   @Input() comida: Comida = new Comida();
   @Output() retorno = new EventEmitter<Comida>();
-
+  objetoSelecionadoParaEdicao: Comida = new Comida();
+  indiceSelecionadoParaEdicao!: number;
   comidaService = inject(ComidaService);
   constructor() {
   }

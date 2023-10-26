@@ -2,11 +2,14 @@ import { Bebida } from "./Bebida"
 import { Comida } from "./Comida"
 import { Funcionario } from "./Funcionario"
 import { Cliente } from "./Cliente"
+import { Bast } from "./Bast";
 
-export class Pedido{
+export class Pedido {
+    id!:number;
+    obs!:string;
     bebida!:Bebida[];
-    comida!:Comida;
+    comida!:Comida[];
     funcionario!:Funcionario;
     cliente!:Cliente;
-    valor!:Number;
+    total!:Number;
 }

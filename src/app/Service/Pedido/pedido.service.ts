@@ -6,12 +6,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PedidoService {
-  private baseUrl = 'http://localhost:8081/api/pedido'; 
+  private baseUrl = 'http://localhost:8080/api/Pedido'; 
 
   constructor(private http: HttpClient) { }
 
   listar(): Observable<any[]> {
-    const url = `${this.baseUrl}/listar`;
+    const url = `${this.baseUrl}/lista`;
     return this.http.get<any[]>(url);
   }
 
@@ -26,7 +26,7 @@ export class PedidoService {
   }
 
   atualizar(id: number, Pedido: any): Observable<any> {
-    const url = `${this.baseUrl}/put/${id}`;
+    const url = `${this.baseUrl}/put/id/${id}`;
     return this.http.put(url, Pedido);
   }
 
