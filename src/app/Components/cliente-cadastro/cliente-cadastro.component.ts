@@ -26,13 +26,7 @@ export class ClienteCadastroComponent implements OnInit {
       this.clienteEmEdicao = { ...clienteRetornado };
     });
   }
-
-  editarClientePorId(id: number): void {
-    this.clienteService.getPorId(id).subscribe((clienteRetornado) => {
-      this.clienteEmEdicao = { ...clienteRetornado };
-    });
-  }
-
+  
   salvarEdicao(): void {
     if (this.clienteEmEdicao) {
       this.clienteService.atualizar(this.clienteEmEdicao.id, this.clienteEmEdicao).subscribe(
