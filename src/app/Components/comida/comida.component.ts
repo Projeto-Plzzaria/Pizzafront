@@ -15,6 +15,7 @@ export class ComidaComponent implements OnInit {
   comidaEmEdicao: Comida | null = null; // Alteração para inicializar como nulo
   sabores: Sabores[] = []; // Lista de sabores selecionados
   saboresSelecionados: Sabores[] = []; // Lista de sabores selecionados
+  
 
   @Output() retorno = new EventEmitter<Comida>();
   @Input() modoLancamento: boolean = false;
@@ -32,7 +33,8 @@ export class ComidaComponent implements OnInit {
 
   modalService = inject(NgbModal);
   modalRef!: NgbModalRef;
-
+  produtosService = inject(ComidaService);
+  
   saboresEnumValues = Object.values(Sabores);
 
   saboresEnumMap: { [key: string]: Sabores } = {
@@ -57,6 +59,27 @@ export class ComidaComponent implements OnInit {
     } else {
       this.sabores.push(sabor);
     }
+  }
+
+  addOuEditarProduto(produto: Comida) {
+
+    this.listAll();
+
+    this.modalService.dismissAll();
+  }
+
+  listAll() {
+
+    this.produtosService.listar().subscribe({
+      next: lista => { // QUANDO DÁ CERTO
+        this.lista = lista;
+      },
+      error: erro => { // QUANDO DÁ ERRO
+        alert('Exemplo de tratamento de erro/exception! Observe o erro no console!');
+        console.error(erro);
+      }
+    });
+
   }
 
   adicionar(modal: any) {
@@ -101,4 +124,10 @@ export class ComidaComponent implements OnInit {
       this.comidas = data;
     });
   }
+
+
+  lancamento(produto: Comida){
+    this.retorno.emit(produto);
+  }
+
 }

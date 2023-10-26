@@ -5,4 +5,5 @@ export class Comida {
     id!: number;
     sabores!: Sabores[];
     tamanho!: Tamanho;
+    valor!: number;
 }

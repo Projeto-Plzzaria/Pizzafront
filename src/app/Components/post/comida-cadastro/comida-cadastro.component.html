@@ -1,18 +1,12 @@
 <form (ngSubmit)="salvar()">
     <div class="mb-3">
-        <label for="sabores" class="form-label">Sabores:</label>
-        <div *ngFor="let sabor of saboresEnumValues">
-            <input type="checkbox" [checked]="saborSelecionado(sabor)" (change)="alterarSelecaoSabor($event, sabor)">{{ sabor }}
-        </div>
+        <label for="ingredientes" class="form-label">ingredientes:</label>
+        <input type="text" class="form-control"  name="teste"
+            [(ngModel)]="comida.sabores">
     </div>
     <div class="mb-3">
-        <label for="tamanho" class="form-label">Tamanho:</label>
-        <select class="form-select" name="tamanho" [(ngModel)]="comida.tamanho">
-            <option value="PEQUENA">Pequena</option>
-            <option value="MEDIA">Média</option>
-            <option value="GRANDE">Grande</option>
-            <option value="GIGANTE">Gigante</option>
-        </select>
+        <label for="tamanhob" class="form-label">tamanho:</label>
+        <input type="text" class="form-control" name="teste" [(ngModel)]="comida.tamanho">
     </div>
     <button type="submit" class="btn btn-primary">Salvar</button>
 </form>
