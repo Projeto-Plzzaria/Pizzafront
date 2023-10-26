@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { Pedido } from 'src/app/Models/Pedido';
 import { Bebida } from 'src/app/Models/Bebida';
+import { Comida } from 'src/app/Models/Comida';
 import { PedidoService } from 'src/app/Service/Pedido/pedido.service';
 @Component({
   selector: 'app-pedido-cadastro',
@@ -24,7 +25,24 @@ export class PedidoCadastroComponent {
   }
 
   salvar() {
+    console.log(this.pedido);
+    if(this.pedido.id>0){
+      this.pedidosService.atualizar(this.pedido.id,this.pedido).subscribe({
+
+        next: mensagem => { 
+          alert(mensagem.message);
+          this.retorno.emit(this.pedido);
+        },
+        error: erro => { 
+          alert('Exemplo de tratamento de erro/exception! Observe o erro no console!');
+          console.error(erro);
+        }
+      });
+      
+
+    }else{
     this.pedidosService.adicionar(this.pedido).subscribe({
+
       next: pedido => { 
         this.retorno.emit(pedido);
       },
@@ -33,14 +51,19 @@ export class PedidoCadastroComponent {
         console.error(erro);
       }
     });
-
-
+  }
   }
   excluir(produto: Bebida, indice: number) {
 
     this.pedido.bebida.splice(indice,1);
     
   }
+  excluic(produto: Comida, indice: number) {
+
+    this.pedido.comida.splice(indice,1);
+    
+  }
+
   retornoProdutosList(produto: Bebida) {
 
     if (this.pedido.bebida == null)
@@ -50,8 +73,19 @@ export class PedidoCadastroComponent {
     this.modalRef.dismiss();
 }
 
-  lancar(modal: any) {
-    this.modalRef = this.modalService.open(modal, { size: 'lg' });
-  }
+
+  retornoComidaList(produtos: Comida) {
+
+    if (this.pedido.comida == null)
+      this.pedido.comida = [];
+
+    this.pedido.comida.push(produtos);
+    this.modalRef.dismiss();
+}
+
+lancar(modal: any) {
+  this.modalRef = this.modalService.open(modal, { size: 'lg' });
+}
 
 }
+

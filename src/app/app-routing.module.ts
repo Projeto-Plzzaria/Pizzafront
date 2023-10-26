@@ -7,6 +7,7 @@ import { BebidaComponent } from './Components/bebida/bebida.component';
 import { ComidaComponent } from './Components/comida/comida.component';
 
 import { EnderecosComponent } from './Components/enderecos/enderecos.component';
+import { PedidoComponent } from './Components/pedido/pedido.component';
 
 import { BebidaCadastroComponent } from './Components/post/bebida-cadastro/bebida-cadastro.component';
 
@@ -16,7 +17,8 @@ const routes: Routes = [  { path: '', component: BannerComponent },
 { path: 'comida', component: ComidaComponent },
 
 {path: 'endereco', component: EnderecosComponent},
-{ path: 'bebidaadd', component: BebidaCadastroComponent },];
+{ path: 'bebidaadd', component: BebidaCadastroComponent },
+{ path: 'pedido', component: PedidoComponent }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

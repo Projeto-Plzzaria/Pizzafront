@@ -9,6 +9,7 @@ import { BebidaService } from 'src/app/Service/Bebida/bebida.service';
 })
 export class BebidaCadastroComponent {
   @Input() bebida: Bebida = new Bebida();
+  
   @Output() retorno = new EventEmitter<Bebida>();
 
   bebidaService = inject(BebidaService);
