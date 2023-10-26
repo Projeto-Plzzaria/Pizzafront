@@ -1,5 +1,8 @@
+import { Sabores } from "./Sabores";
 import { Tamanho } from "./Tamanho"
 export class Comida{
-    ingredientes!:String[];
+    id!: number;
+    sabores!: Sabores[];
     tamanho!:Tamanho;
+
 }

@@ -15,6 +15,7 @@ import {MatTableModule} from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
 import { EnderecosComponent } from './Components/enderecos/enderecos.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -29,6 +30,7 @@ import { EnderecosComponent } from './Components/enderecos/enderecos.component';
     MatTableModule,
     MatCardModule,
     HttpClientModule,
+    FormsModule,
     CollapseModule.forRoot(), // Adicione o módulo CollapseModule aqui
     BsDropdownModule.forRoot(), // Adicione o módulo BsDropdownModule aqui
   ],

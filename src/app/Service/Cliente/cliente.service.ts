@@ -16,7 +16,7 @@ export class ClienteService {
   }
 
   getPorId(id: number): Observable<any> {
-    const url = `${this.baseUrl}/id/${id}`;
+    const url = `${this.baseUrl}/lista/id/${id}`;
     return this.http.get<any>(url);
   }
 
@@ -26,7 +26,7 @@ export class ClienteService {
   }
 
   atualizar(id: number, Cliente: any): Observable<any> {
-    const url = `${this.baseUrl}/put/${id}`;
+    const url = `${this.baseUrl}/put/id/${id}`;
     return this.http.put(url, Cliente);
   }
 

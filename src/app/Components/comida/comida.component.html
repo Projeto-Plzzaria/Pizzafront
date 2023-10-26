@@ -1,27 +1,50 @@
-<mat-card>
+<div>
 
-  Clientes Disponiveis
-<table mat-table [dataSource]="comidas" class="mat-elevation-z8">
+  <div>
+    <h2>Comidas Disponíveis</h2>
+    <table class="custom-table">
+      <thead>
+        <tr>
+          <th>Sabores</th>
+          <th>Tamanho</th>
+          <th>Ação</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let comida of comidas">
+          <td>{{ comida.sabores }}</td>
+          <td>{{ comida.tamanho }}</td>
+          <td>
+            <button (click)="editarComida(comida.id)">Editar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-  <!--- Note that these columns can be defined in any order.
-        The actual rendered columns are set as a property on the row definition" -->
-
-  <!-- Name Column -->
-<ng-container matColumnDef="ingredientes">
-    <th mat-header-cell *matHeaderCellDef> Sabores </th>
-    <td mat-cell *matCellDef="let comida"> 
-        {{comida.ingredientes ? comida.ingredientes.join(', ') : ''}}
-    </td>
-</ng-container>
-  <ng-container matColumnDef="tamanho">
-    <th mat-header-cell *matHeaderCellDef> Tamanho </th>
-    <td mat-cell *matCellDef="let comida"> {{comida.tamanho}} </td>
-  </ng-container>
-
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
-</mat-card>
-
+  <div *ngIf="comidaEmEdicao">
+    <h2>Editar Comida</h2>
+    <form (submit)="salvarEdicao()">
+      <div>
+        <label for="Sabores">Sabores:</label>
+        <select id="Sabores" name="Sabores" [(ngModel)]="saboresSelecionados" multiple>
+          <option *ngFor="let sabor of saboresEnumValues" [value]="sabor">{{ sabor }}</option>
+        </select>
+      </div>
+      <div>
+        <label for="Tamanho">Tamanho:</label>
+        <select id="Tamanho" [(ngModel)]="comidaEmEdicao.tamanho" name="Tamanho">
+          <option value="PEQUENA">Pequena</option>
+          <option value="MEDIA">Média</option>
+          <option value="GRANDE">Grande</option>
+          <option value="GIGANTE">Gigante</option>
+        </select>
+      </div>
+      
+      <button type="submit">Salvar</button>
+      <button (click)="cancelarEdicao()">Cancelar</button>
+    </form>
+  </div>
+  
+</div>
 
