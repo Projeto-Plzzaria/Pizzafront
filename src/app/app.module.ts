@@ -7,7 +7,7 @@ import { BannerComponent } from './Components/banner/banner.component';
 import { NgbCollapseModule, NgbModule } from '@ng-bootstrap/ng-bootstrap'; 
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { ClienteCadastroComponent } from './Components/cliente-cadastro/cliente-cadastro.component';
+import {  ClienteComponent } from './Components/cliente-cadastro/cliente-cadastro.component';
 import { FormsModule } from '@angular/forms';
 import { BebidaComponent } from './Components/bebida/bebida.component';
 import { ComidaComponent } from './Components/comida/comida.component';
@@ -22,6 +22,7 @@ import { EnderecoCadastroComponent } from './Components/post/endereco-cadastro/e
 import { PedidoCadastroComponent } from './Components/post/pedido-cadastro/pedido-cadastro.component';
 import { PedidoComponent } from './Components/pedido/pedido.component';
 import { FuncionarioComponent } from './Components/funcionario/funcionario.component';
+import { ClienteCadastroComponent } from './Components/post/cliente-cadastro/cliente-cadastro.component';
 
 
 //import { MatCardModule } from '@angular/material/card';
@@ -35,7 +36,7 @@ import { FuncionarioComponent } from './Components/funcionario/funcionario.compo
  
 @NgModule({
 
-  declarations: [AppComponent, NavComponent, BannerComponent, ClienteCadastroComponent, BebidaComponent, BebidaComponent, ComidaComponent, EnderecosComponent, BebidaCadastroComponent, ComidaCadastroComponent, FuncionarioCadastroComponent, FuncionarioComponent, EnderecoCadastroComponent, PedidoCadastroComponent, PedidoComponent],
+  declarations: [AppComponent, NavComponent, BannerComponent, ClienteComponent, ClienteCadastroComponent , BebidaComponent, BebidaComponent, ComidaComponent, EnderecosComponent, BebidaCadastroComponent, ComidaCadastroComponent, FuncionarioCadastroComponent, FuncionarioComponent, EnderecoCadastroComponent, PedidoCadastroComponent, PedidoComponent],
 
   imports: [
     BrowserModule,

@@ -1,101 +1,48 @@
 <div class="container">
   <h3 class="alert alert-primary">Listagem de produtos!</h3>
-  <button type="button" class="btn btn-primary" (click)="adicionar(modal1)">Adicionar</button>
+   <button type="button" class="btn btn-primary" (click)="adicionar(modal1)">Adicionar</button> 
   <div class="row">
-    <div class="col-lg-12">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">#ID</th>
-            <th scope="col">Sabores</th>
-            <th scope="col">Tamanho</th>
-            <th scope="col">Ações</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let comida of comidas; let i = index">
-            <td scope="row">{{ comida.id }}</td>
-            <td>{{ comida.sabores }}</td>
-            <td>{{ comida.tamanho }}</td>
-            
-           
+      <div class="col-lg-12">
+          <table class="table table-striped">
+              <thead>
+                  <tr>
+                      <th scope="col">#ID</th>
+                      <th scope="col">Sabor</th>
+                      <th scope="col">Tamanho</th>
+                      <th scope="col">Ações</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let produto of lista; let i = index">
+                      <th scope="row">{{ produto.id }}</th>
+                      <td> {{ produto.sabores }} </td>
+                      <td> {{ produto.tamanho  }} </td>
+                      <td *ngIf="!modoLancamento" > <button type="button" class="btn btn-primary" (click)="editar(modal1, produto, i)">Editar</button> </td>
+                      <td *ngIf="modoLancamento" > <button type="button" class="btn btn-primary" (click)="lancamento( produto)">Lançar</button> </td>
+                  </tr>
+              </tbody>
+          </table>
 
 
-            <td *ngIf="!comidaEmEdicao">
-              <button type="button" class="btn btn-primary" (click)="editarComida(comida.id)">Editar</button>
-            </td>
-            <td *ngIf="modoLancamento">
-              <td *ngIf="modoLancamento" > <button type="button" class="btn btn-primary" (click)="lancamento( comida)">Lançar</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-
-
-
-    
-    <div *ngIf="comidaEmEdicao">
-      <h2>Editar Comida</h2>
-      <form (submit)="salvarEdicao()">
-        <div>
-          <label for="Sabores">Sabores:</label>
-          <select id="Sabores" name="Sabores" [(ngModel)]="saboresSelecionados" multiple>
-            <option *ngFor="let sabor of saboresEnumValues" [value]="sabor">{{ sabor }}</option>
-          </select>
-        </div>
-        <div>
-          <label for="Tamanho">Tamanho:</label>
-          <select id="Tamanho" [(ngModel)]="comidaEmEdicao.tamanho" name="Tamanho">
-            <option value="PEQUENA">Pequena</option>
-            <option value="MEDIA">Média</option>
-            <option value="GRANDE">Grande</option>
-            <option value="GIGANTE">Gigante</option>
-          </select>
-        </div>
-        
-        <button type="submit">Salvar</button>
-        <button (click)="cancelarEdicao()">Cancelar</button>
-      </form>
-    </div>
+      </div>
   </div>
 </div>
 
+
+
+
+
 <ng-template #modal1 let-modal>
   <div class="modal-header">
-    <h4 class="modal-title">Modal title</h4>
-    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+      <h4 class="modal-title">Modal title</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
   </div>
   <div class="modal-body">
-    <!-- Adicione o código de edição aqui -->
-    <div *ngIf="comidaEmEdicao">
-      <h2>Editar Comida</h2>
-      <form (submit)="salvarEdicao()">
-        <div>
-          <label for="Sabores">Sabores:</label>
-          <select id="Sabores" name="Sabores" [(ngModel)]="sabores" multiple>
-            <option *ngFor="let sabor of saboresEnumValues" [value]="sabor">{{ sabor }}</option>
-          </select>
-        </div>
-        <div>
-          <label for="Tamanho">Tamanho:</label>
-          <select id="Tamanho" [(ngModel)]="comidaEmEdicao.tamanho" name="Tamanho">
-            <option value="PEQUENA">Pequena</option>
-            <option value="MEDIA">Média</option>
-            <option value="GRANDE">Grande</option>
-            <option value="GIGANTE">Gigante</option>
-          </select>
-        </div>
-
-        <button type="submit">Salvar</button>
-        <button (click)="cancelarEdicao()">Cancelar</button>
-      </form>
-    </div>
-    <!-- Fim do código de edição -->
+     
+      <app-comida-cadastro [comida]="objetoSelecionadoParaEdicao" (retorno)="addOuEditarProduto($event)" ></app-comida-cadastro>
+      
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
   </div>
 </ng-template>
-

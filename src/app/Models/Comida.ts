@@ -3,7 +3,7 @@ import { Sabores } from "./Sabores";
 
 export class Comida {
     id!: number;
-    sabores!: Sabores[];
+    sabores!: Sabores;
     tamanho!: Tamanho;
     valor!: number;
 }

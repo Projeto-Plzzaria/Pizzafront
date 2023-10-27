@@ -1,7 +1,7 @@
-import { Component, OnInit, EventEmitter, Input, Output, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { Observable } from 'rxjs';
 import { Comida } from 'src/app/Models/Comida';
-import { Sabores } from 'src/app/Models/Sabores';
 import { ComidaService } from 'src/app/Service/Comida/comida.service';
 
 @Component({
@@ -9,24 +9,13 @@ import { ComidaService } from 'src/app/Service/Comida/comida.service';
   templateUrl: './comida.component.html',
   styleUrls: ['./comida.component.scss']
 })
+export class ComidaComponent {
 
-export class ComidaComponent implements OnInit {
-  comidas: Comida[] = [];
-  comidaEmEdicao: Comida | null = null; // Alteração para inicializar como nulo
-  sabores: Sabores[] = []; // Lista de sabores selecionados
-  saboresSelecionados: Sabores[] = []; // Lista de sabores selecionados
-  
+  lista: Comida[] = [];
 
   @Output() retorno = new EventEmitter<Comida>();
   @Input() modoLancamento: boolean = false;
 
-  lista: Comida[] = [];
-
-  ngOnInit() {
-    this.comidaService.listar().subscribe((data) => {
-      this.comidas = data;
-    });
-  }
 
   objetoSelecionadoParaEdicao: Comida = new Comida();
   indiceSelecionadoParaEdicao!: number;
@@ -34,39 +23,14 @@ export class ComidaComponent implements OnInit {
   modalService = inject(NgbModal);
   modalRef!: NgbModalRef;
   produtosService = inject(ComidaService);
-  
-  saboresEnumValues = Object.values(Sabores);
 
-  saboresEnumMap: { [key: string]: Sabores } = {
-    'Frango_com_Catupiry': Sabores.Frango_com_Catupiry,
-    'Portuguesa': Sabores.Portuguesa,
-    'Calabresa': Sabores.Calabresa,
-    'Alho_e_Oleo': Sabores.Alho_e_Oleo,
-    'Strogonoff_de_Carne': Sabores.Strogonoff_de_Carne,
-    'Chocolate': Sabores.Chocolate,
-    'Banana': Sabores.Banana,
-  };
-
-  constructor(private comidaService: ComidaService) {}
-
-  saborSelecionado(sabor: Sabores): boolean {
-    return this.sabores.includes(sabor);
-  }
-
-  toggleSabor(sabor: Sabores) {
-    if (this.saborSelecionado(sabor)) {
-      this.sabores = this.sabores.filter((s) => s !== sabor);
-    } else {
-      this.sabores.push(sabor);
-    }
-  }
-
-  addOuEditarProduto(produto: Comida) {
+  constructor() {
 
     this.listAll();
+    //this.exemploErro();
 
-    this.modalService.dismissAll();
   }
+
 
   listAll() {
 
@@ -81,6 +45,7 @@ export class ComidaComponent implements OnInit {
     });
 
   }
+  // MÉTODOS DA MODAL
 
   adicionar(modal: any) {
     this.objetoSelecionadoParaEdicao = new Comida();
@@ -89,45 +54,26 @@ export class ComidaComponent implements OnInit {
     this.modalRef = this.modalService.open(modal, { size: 'sm' });
   }
 
-  editarComida(id: number): void {
-    this.comidaService.getPorId(id).subscribe((comidaRetornada) => {
-      this.comidaEmEdicao = { ...comidaRetornada };
-      this.saboresSelecionados = [...comidaRetornada.sabores];
-    });
+  editar(modal: any, produto: Comida, indice: number) {
+    this.objetoSelecionadoParaEdicao = Object.assign({}, produto); //clonando o objeto se for edição... pra não mexer diretamente na referência da lista
+    this.indiceSelecionadoParaEdicao = indice;
+
+    this.modalRef = this.modalService.open(modal, { size: 'sm' });
   }
 
-  salvarEdicao(): void {
-    if (this.comidaEmEdicao) {
-      // Mapeia os nomes de sabores selecionados de volta para valores de enum
-      this.comidaEmEdicao.sabores = this.saboresSelecionados.map(sabor => this.saboresEnumMap[sabor]);
-      
-      this.comidaService.atualizar(this.comidaEmEdicao.id, this.comidaEmEdicao).subscribe(
-        (response) => {
-          // Lógica de tratamento bem-sucedido
-          this.comidaEmEdicao = null;
-        },
-        (error) => {
-          // Lógica de tratamento de erro
-          console.error('Erro ao atualizar a comida:', error);
-        }
-      );
-    }
-  }
+  addOuEditarProduto(produto: Comida) {
 
-  cancelarEdicao(): void {
-    this.comidaEmEdicao = null;
-    this.saboresSelecionados = [];
-  }
+    this.listAll();
 
-  carregarComidas() {
-    this.comidaService.listar().subscribe((data) => {
-      this.comidas = data;
-    });
+    this.modalService.dismissAll();
   }
 
 
   lancamento(produto: Comida){
     this.retorno.emit(produto);
   }
+
+
+
 
 }

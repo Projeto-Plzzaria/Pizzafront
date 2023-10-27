@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ClienteCadastroComponent } from './Components/cliente-cadastro/cliente-cadastro.component';
+import {  ClienteComponent } from './Components/cliente-cadastro/cliente-cadastro.component';
 
 import { BannerComponent } from './Components/banner/banner.component';
 import { BebidaComponent } from './Components/bebida/bebida.component';
@@ -12,7 +12,7 @@ import { FuncionarioComponent } from './Components/funcionario/funcionario.compo
 import { BebidaCadastroComponent } from './Components/post/bebida-cadastro/bebida-cadastro.component';
 
 const routes: Routes = [  { path: '', component: BannerComponent },
-{ path: 'cliente', component: ClienteCadastroComponent },
+{ path: 'cliente', component: ClienteComponent },
 { path: 'bebida', component: BebidaComponent },
 { path: 'comida', component: ComidaComponent },
 { path: 'funcionario', component: FuncionarioComponent },

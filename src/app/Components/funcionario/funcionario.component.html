@@ -1,6 +1,6 @@
 <div class="container">
   <h3 class="alert alert-primary">Listagem de produtos!</h3>
-  <button type="button" class="btn btn-primary">Adicionar</button>
+  <button type="button" class="btn btn-primary" (click)="adicionar(modal1)">Adicionar</button>
   <div class="row">
     <div class="col-lg-12">
       <table class="table table-striped">
@@ -49,3 +49,19 @@
     </form>
   </div>
 </div>
+
+
+<ng-template #modal1 let-modal>
+  <div class="modal-header">
+      <h4 class="modal-title">Modal title</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+     
+      <app-funcionario-cadastro [funcionario]="objetoSelecionadoParaEdicao" (retorno)="addOuEditarProduto($event)" ></app-funcionario-cadastro>
+      
+  </div>
+  <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+  </div>
+</ng-template>

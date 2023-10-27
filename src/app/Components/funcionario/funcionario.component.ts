@@ -1,15 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+
 import { Funcionario } from 'src/app/Models/Funcionario';
 import { FuncionarioService } from 'src/app/Service/Funcionario/funcionario.service';
+import { Component, EventEmitter, Input, Output, inject, OnInit } from '@angular/core';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-funcionario-Cadastro',
   templateUrl: './funcionario.component.html',
   styleUrls: ['./funcionario.component.scss']
+  
 })
 export class FuncionarioComponent implements OnInit{
   funcionarios: Funcionario[] = [];
-  funcionarioEmEdicao: Funcionario | null = new Funcionario();
+  funcionarioEmEdicao: Funcionario | null = null;
+  objetoSelecionadoParaEdicao: Funcionario = new Funcionario();
+  indiceSelecionadoParaEdicao!: number;
+  modalService = inject(NgbModal);
+  modalRef!: NgbModalRef;
+  produtosService = inject(FuncionarioService);
+  lista: Funcionario[] = [];
 
   constructor(private funcionarioService: FuncionarioService){}
 
@@ -18,6 +27,7 @@ export class FuncionarioComponent implements OnInit{
       this.funcionarios = data;
     });
   }
+
 
   editarFuncionario(id: number): void {
     this.funcionarioService.getPorId(id).subscribe((funcionarioRetornado) => {
@@ -40,7 +50,45 @@ export class FuncionarioComponent implements OnInit{
     }
   }
 
+
   cancelarEdicao(): void {
     this.funcionarioEmEdicao = null; // Cancela a edição e limpa o cliente em edição
   }
+
+
+
+  addOuEditarProduto(produto: Funcionario) {
+
+    this.listAll();
+  
+    this.modalService.dismissAll();
+  }
+  
+  listAll() {
+  
+    this.produtosService.listar().subscribe({
+      next: lista => { // QUANDO DÁ CERTO
+        this.lista = lista;
+      },
+      error: erro => { // QUANDO DÁ ERRO
+        alert('Exemplo de tratamento de erro/exception! Observe o erro no console!');
+        console.error(erro);
+      }
+    });
+  
+  }
+  
+  adicionar(modal: any) {
+    this.objetoSelecionadoParaEdicao = new Funcionario();
+    this.indiceSelecionadoParaEdicao = -1;
+
+    this.modalRef = this.modalService.open(modal, { size: 'sm' });
+  }
+
+
+
+
+
+
 }
+
