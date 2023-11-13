@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { Bebida } from 'src/app/Models/Bebida';
+import { Tamanhob } from 'src/app/Models/Tamanhob';
 import { BebidaService } from 'src/app/Service/Bebida/bebida.service';
 
 @Component({
@@ -9,13 +10,14 @@ import { BebidaService } from 'src/app/Service/Bebida/bebida.service';
 })
 export class BebidaCadastroComponent {
   @Input() bebida: Bebida = new Bebida();
+  tamanhosEnum = Object.values(Tamanhob);
   
   @Output() retorno = new EventEmitter<Bebida>();
 
   bebidaService = inject(BebidaService);
   constructor() {}
-  salvar() {
 
+  salvar() {
     this.bebidaService.adicionar(this.bebida).subscribe({
       next: (bebida) => {
         console.log("ESTA VIVO!!!!");

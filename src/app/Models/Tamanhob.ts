@@ -1,3 +1,6 @@
 export enum Tamanhob{
-    tamanho,L_2
+    L_2, 
+    L_1,
+    ML_500,
+    ML_300
 }

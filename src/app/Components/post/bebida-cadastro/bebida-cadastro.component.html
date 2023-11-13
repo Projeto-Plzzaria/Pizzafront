@@ -4,13 +4,10 @@
     <input type="text" class="form-control" name="sabor" [(ngModel)]="bebida.sabor" />
   </div>
   <div class="mb-3">
-    <label for="tamanhob" class="form-label">tamanho:</label>
-    <input
-      type="text"
-      class="form-control"
-      name="tamanho"
-      [(ngModel)]="bebida.tamanho"
-    />
+    <label for="tamanhob" class="form-label">Tamanho:</label>
+    <select class="form-select" name="tamanho" [(ngModel)]="bebida.tamanho">
+      <option *ngFor="let tamanho of tamanhosEnum" [value]="tamanho">{{ tamanho }}</option>
+    </select>
   </div>
   <div class="mb-3">
     <label for="tamanhob" class="form-label">valor:</label>

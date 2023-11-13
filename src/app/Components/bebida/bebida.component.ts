@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { Bebida } from 'src/app/Models/Bebida';
+import { Tamanhob } from 'src/app/Models/Tamanhob';
 import { BebidaService } from 'src/app/Service/Bebida/bebida.service';
 
 @Component({
@@ -72,7 +73,6 @@ export class BebidaComponent {
   lancamento(produto: Bebida){
     this.retorno.emit(produto);
   }
-
 
 
 
