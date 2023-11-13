@@ -26,7 +26,7 @@ export class BebidaService {
   }
 
   atualizar(id: number, Bebida: any): Observable<any> {
-    const url = `${this.baseUrl}/put/${id}`;
+    const url = `${this.baseUrl}/put/id/${id}`;
     return this.http.put(url, Bebida);
   }
 

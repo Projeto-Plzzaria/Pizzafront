@@ -60,13 +60,13 @@ export class BebidaComponent {
 
     this.modalRef = this.modalService.open(modal, { size: 'sm' });
   }
+  
 
   addOuEditarProduto(produto: Bebida) {
-
     this.listAll();
-
     this.modalService.dismissAll();
   }
+  
 
 
   lancamento(produto: Bebida){

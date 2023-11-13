@@ -1,14 +1,14 @@
 <form (ngSubmit)="salvar()">
   <div class="mb-3">
     <label for="sabor" class="form-label">sabor:</label>
-    <input type="text" class="form-control" name="teste" [(ngModel)]="bebida.sabor" />
+    <input type="text" class="form-control" name="sabor" [(ngModel)]="bebida.sabor" />
   </div>
   <div class="mb-3">
     <label for="tamanhob" class="form-label">tamanho:</label>
     <input
       type="text"
       class="form-control"
-      name="teste"
+      name="tamanho"
       [(ngModel)]="bebida.tamanho"
     />
   </div>
@@ -17,7 +17,7 @@
     <input
       type="text"
       class="form-control"
-      name="teste"
+      name="valor"
       [(ngModel)]="bebida.valor"
     />
   </div>
