@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Pedido } from 'src/app/Models/Pedido';
 
 @Injectable({
   providedIn: 'root'
@@ -10,19 +11,19 @@ export class PedidoService {
 
   constructor(private http: HttpClient) { }
 
-  listar(): Observable<any[]> {
+  listar(): Observable<Pedido[]> {
     const url = `${this.baseUrl}/lista`;
-    return this.http.get<any[]>(url);
+    return this.http.get<Pedido[]>(url);
   }
 
-  getPorId(id: number): Observable<any> {
+  getPorId(id: number): Observable<Pedido> {
     const url = `${this.baseUrl}/id/${id}`;
-    return this.http.get<any>(url);
+    return this.http.get<Pedido>(url);
   }
 
-  adicionar(Pedido: any): Observable<any> {
+  adicionar(pedido: Pedido): Observable<Pedido> {
     const url = `${this.baseUrl}/cadastrar`;
-    return this.http.post(url, Pedido);
+    return this.http.post<Pedido>(url, pedido);
   }
 
   atualizar(id: number, Pedido: any): Observable<any> {

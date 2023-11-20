@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Endereco } from 'src/app/Models/Endereco';
 
 @Injectable({
   providedIn: 'root'
@@ -10,24 +11,24 @@ export class EnderecoService {
 
   constructor(private http: HttpClient) { }
 
-  listar(): Observable<any[]> {
+  listar(): Observable<Endereco[]> {
     const url = `${this.baseUrl}/lista`;
-    return this.http.get<any[]>(url);
+    return this.http.get<Endereco[]>(url);
   }
 
-  getPorId(id: number): Observable<any> {
+  getPorId(id: number): Observable<Endereco> {
     const url = `${this.baseUrl}/lista/id/${id}`;
-    return this.http.get<any>(url);
+    return this.http.get<Endereco>(url);
   }
 
-  adicionar(Endereco: any): Observable<any> {
+  adicionar(endereco: Endereco): Observable<Endereco> {
     const url = `${this.baseUrl}/cadastrar`;
-    return this.http.post(url, Endereco);
+    return this.http.post<Endereco>(url, endereco);
   }
 
-  atualizar(id: number, Endereco: any): Observable<any> {
+  atualizar(id: number, endereco: Endereco): Observable<Endereco> {
     const url = `${this.baseUrl}/put/id/${id}`;
-    return this.http.put(url, Endereco);
+    return this.http.put<Endereco>(url, endereco);
   }
 
   excluir(id: number): Observable<any> {

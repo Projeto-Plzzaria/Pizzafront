@@ -1,12 +1,36 @@
 <form (ngSubmit)="salvar()">
-    <div class="mb-3">
-        <label for="ingredientes" class="form-label">ingredientes:</label>
-        <input type="text" class="form-control"  name="teste"
-            [(ngModel)]="comida.sabores">
-    </div>
-    <div class="mb-3">
-        <label for="tamanhob" class="form-label">tamanho:</label>
-        <input type="text" class="form-control" name="teste" [(ngModel)]="comida.tamanho">
-    </div>
+  <div class="mb-3">
+    <label for="tamanhob" class="form-label">tamanho:</label>
+    <select class="form-select" name="tamanho" [(ngModel)]="comida.tamanho">
+      <option *ngFor="let tamanho of tamanhosEnum" [value]="tamanho">{{ tamanho }}</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="saborum" class="form-label">Primeiro Sabor:</label>
+    <select class="form-select" name="saborum" [(ngModel)]="comida.saborum">
+      <option *ngFor="let saborum of saborumEnum" [value]="saborum">{{ saborum }}</option>
+    </select>
+  </div>
+
+  <div class="mb-3" *ngIf="getTamanhoString(comida.tamanho) >= '1'">
+    <label for="sabordois" class="form-label">Segundo Sabor:</label>
+    <select class="form-select" name="sabordois" [(ngModel)]="comida.sabordois">
+      <option *ngFor="let sabordois of sabordoisEnum" [value]="sabordois">{{ sabordois }}</option>
+    </select>
+  </div>
+  
+  <!-- Mostre o dropdown de Terceiro Sabor apenas se o tamanho for Grande -->
+  <div class="mb-3" *ngIf="getTamanhoString(comida.tamanho) >= '2'">
+    <label for="sabortres" class="form-label">Terceiro Sabor:</label>
+    <select class="form-select" name="sabortres" [(ngModel)]="comida.sabortres">
+      <option *ngFor="let sabortres of sabortresEnum" [value]="sabortres">{{ sabortres }}</option>
+    </select>
+  </div>
+  
     <button type="submit" class="btn btn-primary">Salvar</button>
 </form>
+
+
+
+
+

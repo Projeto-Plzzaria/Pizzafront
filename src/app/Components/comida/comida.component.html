@@ -7,7 +7,7 @@
               <thead>
                   <tr>
                       <th scope="col">#ID</th>
-                      <th scope="col">Sabor</th>
+                      <th scope="col">Sabores</th>
                       <th scope="col">Tamanho</th>
                       <th scope="col">Ações</th>
                   </tr>
@@ -15,7 +15,7 @@
               <tbody>
                   <tr *ngFor="let produto of lista; let i = index">
                       <th scope="row">{{ produto.id }}</th>
-                      <td> {{ produto.sabores }} </td>
+                      <td> {{ produto.saborum }}<br>{{ produto.sabordois }}<br>{{ produto.sabortres }}</td>
                       <td> {{ produto.tamanho  }} </td>
                       <td *ngIf="!modoLancamento" > <button type="button" class="btn btn-primary" (click)="editar(modal1, produto, i)">Editar</button> </td>
                       <td *ngIf="modoLancamento" > <button type="button" class="btn btn-primary" (click)="lancamento( produto)">Lançar</button> </td>

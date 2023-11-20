@@ -80,7 +80,7 @@
         <tbody>
             <tr *ngFor="let produtos of pedido.comida; let i = index">
                 <th scope="row">{{ produtos.id }}</th>
-                <td> {{ produtos.sabores }} </td>
+                <td> {{ produtos.saborum }} </td>
                 <td> {{ produtos.tamanho }} </td>
                 <td> <button type="button" class="btn btn-primary" (click)="excluic(produtos,i)">Excluir</button> </td>
             </tr>

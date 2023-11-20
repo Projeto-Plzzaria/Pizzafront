@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Cliente } from 'src/app/Models/Cliente';
 
 @Injectable({
   providedIn: 'root'
@@ -10,24 +11,24 @@ export class ClienteService {
 
   constructor(private http: HttpClient) { }
 
-  listar(): Observable<any[]> {
+  listar(): Observable<Cliente[]> {
     const url = `${this.baseUrl}/lista`;
-    return this.http.get<any[]>(url);
+    return this.http.get<Cliente[]>(url);
   }
 
-  getPorId(id: number): Observable<any> {
+  getPorId(id: number): Observable<Cliente> {
     const url = `${this.baseUrl}/lista/id/${id}`;
-    return this.http.get<any>(url);
+    return this.http.get<Cliente>(url);
   }
 
-  adicionar(Cliente: any): Observable<any> {
+  adicionar(cliente: Cliente): Observable<Cliente> {
     const url = `${this.baseUrl}/cadastrar`;
-    return this.http.post(url, Cliente);
+    return this.http.post<Cliente>(url, cliente);
   }
 
-  atualizar(id: number, Cliente: any): Observable<any> {
+  atualizar(id: number, cliente: Cliente): Observable<Cliente> {
     const url = `${this.baseUrl}/put/id/${id}`;
-    return this.http.put(url, Cliente);
+    return this.http.put<Cliente>(url, cliente);
   }
 
   excluir(id: number): Observable<any> {

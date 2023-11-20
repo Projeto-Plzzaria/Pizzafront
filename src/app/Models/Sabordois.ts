@@ -1,4 +1,4 @@
-export enum Sabores {
+export enum Sabordois {
     Frango_com_Catupiry = "Frango_com_Catupiry",
     Portuguesa = "Portuguesa",
     Calabresa ="Calabresa",
@@ -6,7 +6,8 @@ export enum Sabores {
       Strogonoff_de_Carne = "Strogonoff_de_Carne",
       Chocolate = "Chocolate",
       Banana = "Banana",
-      Pepperoni = "Pepperoni"
+      Pepperoni = "Pepperoni",
+      Nenhum = "Nenhum"
       
     }
     

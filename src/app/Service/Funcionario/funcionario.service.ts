@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Funcionario } from 'src/app/Models/Funcionario';
 
 @Injectable({
   providedIn: 'root'
@@ -10,24 +11,24 @@ export class FuncionarioService {
 
   constructor(private http: HttpClient) { }
 
-  listar(): Observable<any[]> {
+  listar(): Observable<Funcionario[]> {
     const url = `${this.baseUrl}/lista`;
-    return this.http.get<any[]>(url);
+    return this.http.get<Funcionario[]>(url);
   }
 
-  getPorId(id: number): Observable<any> {
+  getPorId(id: number): Observable<Funcionario> {
     const url = `${this.baseUrl}/lista/id/${id}`;
-    return this.http.get<any>(url);
+    return this.http.get<Funcionario>(url);
   }
 
-  adicionar(Funcionario: any): Observable<any> {
+  adicionar(funcionario: Funcionario): Observable<Funcionario> {
     const url = `${this.baseUrl}/cadastrar`;
-    return this.http.post(url, Funcionario);
+    return this.http.post<Funcionario>(url, funcionario);
   }
 
-  atualizar(id: number, Funcionario: any): Observable<any> {
+  atualizar(id: number, funcionario: Funcionario): Observable<Funcionario> {
     const url = `${this.baseUrl}/put/id/${id}`;
-    return this.http.put(url, Funcionario);
+    return this.http.put<Funcionario>(url, funcionario);
   }
 
   excluir(id: number): Observable<any> {

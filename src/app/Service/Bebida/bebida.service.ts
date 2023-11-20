@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Bebida } from 'src/app/Models/Bebida';
 
 @Injectable({
   providedIn: 'root'
@@ -10,26 +11,26 @@ export class BebidaService {
 
   constructor(private http: HttpClient) { }
 
-  listar(): Observable<any[]> {
+  listar(): Observable<Bebida[]> {
     const url = `${this.baseUrl}/lista`;
-    return this.http.get<any[]>(url);
+    return this.http.get<Bebida[]>(url);
   }
-
-  getPorId(id: number): Observable<any> {
+  
+  getPorId(id: number): Observable<Bebida> {
     const url = `${this.baseUrl}/id/${id}`;
-    return this.http.get<any>(url);
+    return this.http.get<Bebida>(url);
   }
-
-  adicionar(Bebida: any): Observable<any> {
+  
+  adicionar(bebida: Bebida): Observable<Bebida> {
     const url = `${this.baseUrl}/cadastrar`;
-    return this.http.post(url, Bebida);
+    return this.http.post<Bebida>(url, bebida);
   }
-
-  atualizar(id: number, Bebida: any): Observable<any> {
+  
+  atualizar(id: number, bebida: Bebida): Observable<Bebida> {
     const url = `${this.baseUrl}/put/id/${id}`;
-    return this.http.put(url, Bebida);
+    return this.http.put<Bebida>(url, bebida);
   }
-
+  
   excluir(id: number): Observable<any> {
     const url = `${this.baseUrl}/delete/${id}`;
     return this.http.delete(url);
