@@ -1,6 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+
 import { BebidaComponent } from './bebida.component';
+
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('BebidaComponent', () => {
   let component: BebidaComponent;
@@ -8,7 +12,11 @@ describe('BebidaComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [BebidaComponent]
+      imports:[HttpClientTestingModule],
+      declarations: [BebidaComponent],
+      schemas: [
+        CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA 
+      ]
     });
     fixture = TestBed.createComponent(BebidaComponent);
     component = fixture.componentInstance;
@@ -19,3 +27,4 @@ describe('BebidaComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
