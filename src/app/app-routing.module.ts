@@ -20,6 +20,23 @@ const routes: Routes = [  { path: '', component: BannerComponent },
 { path: 'bebidaadd', component: BebidaCadastroComponent },
 { path: 'pedido', component: PedidoComponent }];
 
+
+/*const routes: Routes = [
+  { path: "", redirectTo: "login", pathMatch: 'full' },
+  { path: "login", component: LoginComponent },
+  {
+    path: "admin", component: IndexComponent, canActivate: [rotaguardGuard], children: [
+      { path: "dashboard", component: DashboardComponent },
+      { path: "pedidos", component: PedidoslistComponent },
+      { path: "produtos", component: ProdutoslistComponent },
+      { path: "sabores", component: SaboreslistComponent },
+      { path: "drag", component: DragComponent },
+    ]
+  }
+
+];
+ */
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

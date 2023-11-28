@@ -21,6 +21,7 @@ export class ComidaCadastroComponent {
   objetoSelecionadoParaEdicao: Comida = new Comida();
   indiceSelecionadoParaEdicao!: number;
   comidaService = inject(ComidaService);
+  saborum!: string;
   constructor() {
   }
   salvar() {

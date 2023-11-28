@@ -23,6 +23,8 @@ import { PedidoCadastroComponent } from './Components/post/pedido-cadastro/pedid
 import { PedidoComponent } from './Components/pedido/pedido.component';
 import { FuncionarioComponent } from './Components/funcionario/funcionario.component';
 import { ClienteCadastroComponent } from './Components/post/cliente-cadastro/cliente-cadastro.component';
+import { LoginComponent } from './Components/login/login.component';
+
 
 
 //import { MatCardModule } from '@angular/material/card';
@@ -36,7 +38,7 @@ import { ClienteCadastroComponent } from './Components/post/cliente-cadastro/cli
  
 @NgModule({
 
-  declarations: [AppComponent, NavComponent, BannerComponent, ClienteComponent, ClienteCadastroComponent , BebidaComponent, BebidaComponent, ComidaComponent, EnderecosComponent, BebidaCadastroComponent, ComidaCadastroComponent, FuncionarioCadastroComponent, FuncionarioComponent, EnderecoCadastroComponent, PedidoCadastroComponent, PedidoComponent],
+  declarations: [AppComponent, NavComponent, BannerComponent, ClienteComponent, ClienteCadastroComponent , BebidaComponent, BebidaComponent, ComidaComponent, EnderecosComponent, BebidaCadastroComponent, ComidaCadastroComponent, FuncionarioCadastroComponent, FuncionarioComponent, EnderecoCadastroComponent, PedidoCadastroComponent, PedidoComponent, LoginComponent],
 
   imports: [
     BrowserModule,

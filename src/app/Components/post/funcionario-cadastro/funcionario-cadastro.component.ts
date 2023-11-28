@@ -5,29 +5,23 @@ import { FuncionarioService } from 'src/app/Service/Funcionario/funcionario.serv
 @Component({
   selector: 'app-funcionario-cadastro',
   templateUrl: './funcionario-cadastro.component.html',
-  styleUrls: ['./funcionario-cadastro.component.scss']
+  styleUrls: ['./funcionario-cadastro.component.scss'],
 })
 export class FuncionarioCadastroComponent {
-
   @Input() funcionario: Funcionario = new Funcionario();
   @Output() retorno = new EventEmitter<Funcionario>();
 
   funcionarioService = inject(FuncionarioService);
-  constructor() {
-  }
+  constructor() {}
   salvar() {
     this.funcionarioService.adicionar(this.funcionario).subscribe({
-      next: funcionario => { 
+      next: (funcionario) => {
         this.retorno.emit(funcionario);
       },
-      error: erro => {
-        alert('Exemplo de tratamento de erro/exception! Observe o erro no console!');
+      error: (erro) => {
+        //alert('Exemplo de tratamento de erro/exception! Observe o erro no console!');
         console.error(erro);
-      }
+      },
     });
-
-
-
   }
-
 }

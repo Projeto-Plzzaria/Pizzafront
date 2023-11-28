@@ -1,27 +1,37 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { EnderecoCadastroComponent } from './endereco-cadastro.component';
-import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { EnderecoCadastroComponent } from './endereco-cadastro.component';
+import { EnderecoService } from 'src/app/Service/Endereco/endereco.service';
+import { of } from 'rxjs';
 
 describe('EnderecoCadastroComponent', () => {
   let component: EnderecoCadastroComponent;
   let fixture: ComponentFixture<EnderecoCadastroComponent>;
+  let enderecoService: EnderecoService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports:[HttpClientTestingModule],
+      imports: [HttpClientTestingModule],
       declarations: [EnderecoCadastroComponent],
-      schemas: [
-        CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA 
-      ]
+      providers: [EnderecoService],
     });
+
     fixture = TestBed.createComponent(EnderecoCadastroComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    enderecoService = TestBed.inject(EnderecoService);
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should call enderecoService.adicionar when salvar is called', () => {
+    const enderecoSpy = spyOn(enderecoService, 'adicionar').and.returnValue(of({} as any));
+    component.salvar();
+    expect(enderecoSpy).toHaveBeenCalled();
+  });
+
+  
+
+ 
 });
