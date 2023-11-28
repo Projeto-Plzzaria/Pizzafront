@@ -7,7 +7,9 @@
     </div>
     <div class="mb-3">
         <label for="cargo" class="form-label">cargo:</label>
-        <input type="text" class="form-control" name="teste" [(ngModel)]="funcionario.cargo">
+        <select class="form-select" name="cargo" [(ngModel)]="funcionario.cargo">
+            <option *ngFor="let cargo of cargosEnum" [value]="cargo">{{ cargo }}</option>
+          </select>
     </div>
     <div class="mb-3">
         <label for="numero" class="form-label">numero:</label>

@@ -17,15 +17,12 @@
           <tr *ngFor="let funcionario of funcionarios; let i = index">
             <td scope="row">{{ funcionario.id }}</td>
             <td>{{ funcionario.nome  }}</td>
-        
             <td>{{ funcionario.cargo  }}</td>
             <td>{{ funcionario.email  }}</td>
             <td>{{ funcionario.numero  }}</td>
-           
-
-
+            <td *ngIf="!modoLancamento" > <button type="button" class="btn btn-primary" (click)="editar(modal1, funcionario, i)">Editar</button> </td>
+            <td *ngIf="modoLancamento" > <button type="button" class="btn btn-primary" (click)="lancamento( funcionario)">Lançar</button> </td>
             <td>
-              <button (click)="editarFuncionario(funcionario.id)">Editar</button>
             </td>
           </tr>
         </tbody>
@@ -33,22 +30,6 @@
     </div>
 
 
-  <div *ngIf="funcionarioEmEdicao">
-    <h2>Editar Funcionario</h2>
-    <form (submit)="salvarEdicao()">
-      <div>
-        <label for="nome">Nome:</label>
-        <input id="nome" [(ngModel)]="funcionarioEmEdicao.nome" name="nome">
-      </div>
-      <div>
-        <label for="numero">Número:</label>
-        <input id="numero" [(ngModel)]="funcionarioEmEdicao.numero" name="numero">
-      </div>
-      <button type="submit">Salvar</button>
-      <button (click)="cancelarEdicao()">Cancelar</button>
-    </form>
-  </div>
-</div>
 
 
 <ng-template #modal1 let-modal>

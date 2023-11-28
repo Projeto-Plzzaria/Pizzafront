@@ -19,6 +19,8 @@ export class FuncionarioComponent implements OnInit{
   modalRef!: NgbModalRef;
   produtosService = inject(FuncionarioService);
   lista: Funcionario[] = [];
+  @Output() retorno = new EventEmitter<Funcionario>();
+  @Input() modoLancamento: boolean = false;
 
   constructor(private funcionarioService: FuncionarioService){}
 
@@ -27,34 +29,12 @@ export class FuncionarioComponent implements OnInit{
       this.funcionarios = data;
     });
   }
+  editar(modal: any, produto: Funcionario, indice: number) {
+    this.objetoSelecionadoParaEdicao = Object.assign({}, produto); //clonando o objeto se for edição... pra não mexer diretamente na referência da lista
+    this.indiceSelecionadoParaEdicao = indice;
 
-
-  editarFuncionario(id: number): void {
-    this.funcionarioService.getPorId(id).subscribe((funcionarioRetornado) => {
-      this.funcionarioEmEdicao = { ...funcionarioRetornado };
-    });
+    this.modalRef = this.modalService.open(modal, { size: 'sm' });
   }
-
-  salvarEdicao(): void {
-    if (this.funcionarioEmEdicao) {
-      this.funcionarioService.atualizar(this.funcionarioEmEdicao.id, this.funcionarioEmEdicao).subscribe(
-        (response) => {
-          // Lógica de tratamento bem-sucedido
-          this.funcionarioEmEdicao = null; // Limpa o cliente em edição
-        },
-        (error) => {
-          // Lógica de tratamento de erro
-          console.error('Erro ao atualizar o cliente:', error);
-        }
-      );
-    }
-  }
-
-
-  cancelarEdicao(): void {
-    this.funcionarioEmEdicao = null; // Cancela a edição e limpa o cliente em edição
-  }
-
 
 
   addOuEditarProduto(produto: Funcionario) {
@@ -63,6 +43,11 @@ export class FuncionarioComponent implements OnInit{
   
     this.modalService.dismissAll();
   }
+
+  lancamento(produto: Funcionario){
+    this.retorno.emit(produto);
+  }
+
   
   listAll() {
   

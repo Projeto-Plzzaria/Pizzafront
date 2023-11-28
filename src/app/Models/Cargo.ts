@@ -1,3 +1,5 @@
 export enum Cargo{
-    cargos
+    Caixa,
+    Pizzaiolo,
+    Entregador
 }

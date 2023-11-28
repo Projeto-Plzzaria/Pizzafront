@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
+import { Cargo } from 'src/app/Models/Cargo';
 import { Funcionario } from 'src/app/Models/Funcionario';
 import { FuncionarioService } from 'src/app/Service/Funcionario/funcionario.service';
 
@@ -12,6 +13,7 @@ export class FuncionarioCadastroComponent {
   @Input() funcionario: Funcionario = new Funcionario();
   @Output() retorno = new EventEmitter<Funcionario>();
 
+  cargosEnum = Object.values(Cargo);
   funcionarioService = inject(FuncionarioService);
   constructor() {
   }
