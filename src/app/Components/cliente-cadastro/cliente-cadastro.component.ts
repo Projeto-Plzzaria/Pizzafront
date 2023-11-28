@@ -19,7 +19,8 @@ export class ClienteComponent implements OnInit {
     modalRef!: NgbModalRef;
     produtosService = inject(ClienteService);
     lista: Cliente[] = [];
-    
+    @Output() retorno = new EventEmitter<Cliente>();
+    @Input() modoLancamento: boolean = false;
 
 
   constructor(private clienteService: ClienteService) {}
@@ -30,29 +31,15 @@ export class ClienteComponent implements OnInit {
     });
   }
 
-  editarCliente(id: number): void {
-    this.clienteService.getPorId(id).subscribe((clienteRetornado) => {
-      this.clienteEmEdicao = { ...clienteRetornado };
-    });
+  editar(modal: any, produto: Cliente, indice: number) {
+    this.objetoSelecionadoParaEdicao = Object.assign({}, produto); //clonando o objeto se for edição... pra não mexer diretamente na referência da lista
+    this.indiceSelecionadoParaEdicao = indice;
+
+    this.modalRef = this.modalService.open(modal, { size: 'sm' });
   }
-  
-  salvarEdicao(): void {
-    if (this.clienteEmEdicao) {
-      this.clienteService.atualizar(this.clienteEmEdicao.id, this.clienteEmEdicao).subscribe(
-        (response) => {
-          // Lógica de tratamento bem-sucedido
-          this.clienteEmEdicao = null; // Limpa o cliente em edição
-        },
-        (error) => {
-          // Lógica de tratamento de erro
-          console.error('Erro ao atualizar o cliente:', error);
-        }
-      );
-    }
-  }
-  
-  cancelarEdicao(): void {
-    this.clienteEmEdicao = null; // Cancela a edição e limpa o cliente em edição
+
+  lancamento(produto: Cliente){
+    this.retorno.emit(produto);
   }
 
 

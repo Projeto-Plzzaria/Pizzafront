@@ -27,7 +27,7 @@ export class PedidoCadastroComponent implements OnInit {
   clientes: Cliente[] = [];
   funcionarios: Funcionario[] = [];
   listaCliente: Cliente[] = [];
-  listaFuncionario: Cliente[] = [];
+  listaFuncionario: Funcionario[] = [];
 
   constructor(
     private pedidoService: PedidoService,

@@ -9,43 +9,25 @@
             <th scope="col">#ID</th>
             <th scope="col">nome</th>
             <th scope="col">numero</th>
+            <th scope="col">rua</th>
+            <th scope="col">Numero da Residencia</th>
+            <th scope="col">Bairro</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let cliente of clientes; let i = index">
             <td scope="row">{{ cliente.id }}</td>
             <td>{{ cliente.nome  }}</td>
-      
             <td>{{ cliente.numero  }}</td>
-           
-
-
-            <td>
-              <button (click)="editarCliente(cliente.id)">Editar</button>
-            </td>
+            <td>{{ cliente.rua  }}</td>
+            <td>{{ cliente.num  }}</td>
+            <td>{{ cliente.bairro  }}</td> 
+            <td *ngIf="!modoLancamento" > <button type="button" class="btn btn-primary" (click)="editar(modal1, cliente, i)">Editar</button> </td>
+            <td *ngIf="modoLancamento" > <button type="button" class="btn btn-primary" (click)="lancamento( cliente)">Lançar</button> </td>
           </tr>
         </tbody>
       </table>
     </div>
-
-
-  <div *ngIf="clienteEmEdicao">
-    <h2>Editar Cliente</h2>
-    <form (submit)="salvarEdicao()">
-      <div>
-        <label for="nome">Nome:</label>
-        <input id="nome" [(ngModel)]="clienteEmEdicao.nome" name="nome">
-      </div>
-      <div>
-        <label for="numero">Número:</label>
-        <input id="numero" [(ngModel)]="clienteEmEdicao.numero" name="numero">
-      </div>
-      <button type="submit">Salvar</button>
-      <button (click)="cancelarEdicao()">Cancelar</button>
-    </form>
-  </div>
-</div>
-
 
 
 <ng-template #modal1 let-modal>

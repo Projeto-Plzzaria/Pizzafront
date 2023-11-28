@@ -1,10 +1,22 @@
 <form (ngSubmit)="salvar()">
     <div class="mb-3">
         <label for="nome" class="form-label">nome:</label>
-        <input type="text" class="form-control"  name="teste"  [(ngModel)]="cliente.nome"> </div>
+        <input type="text" class="form-control"  name="nome"  [(ngModel)]="cliente.nome"> </div>
     <div class="mb-3">
         <label for="numero" class="form-label">numero:</label>
-        <input type="number" class="form-control" name="teste" [(ngModel)]="cliente.numero">
+        <input type="number" class="form-control" name="numero" [(ngModel)]="cliente.numero">
+    </div>
+    <div class="mb-3">
+        <label for="numero" class="form-label">Rua:</label>
+        <input type="text" class="form-control" name="rua" [(ngModel)]="cliente.rua">
+    </div>
+    <div class="mb-3">
+        <label for="numero" class="form-label">Numero da Casa:</label>
+        <input type="number" class="form-control" name="num" [(ngModel)]="cliente.num">
+    </div>
+    <div class="mb-3">
+        <label for="numero" class="form-label">Bairro:</label>
+        <input type="text" class="form-control" name="bairro" [(ngModel)]="cliente.bairro">
     </div>
     <button type="submit" class="btn btn-primary">Salvar</button>
 </form>
