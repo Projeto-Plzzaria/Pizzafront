@@ -1,5 +1,3 @@
-
-
 <nav class="navbar navbar-expand-lg bg-secondary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Pizzaria</a>
@@ -7,24 +5,26 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-
-        <li class="nav-item"><a class="nav-link active"  routerLink="/admin/cliente">Clientes</a></li>
-        <li class="nav-item"><a class="nav-link active"  routerLink="/admin/funcionario">Funcionarios</a></li>
-        <li class="nav-item"><a class="nav-link active"  routerLink="/admin/bebida">Bebidas</a></li>
-        <li class="nav-item"><a class="nav-link active"  routerLink="/admin/comida">Pizzas</a></li>
-        <li class="nav-item"><a class="nav-link active"  routerLink="/admin/pedido">Pedidos</a></li>
-        <li class="nav-item"><a class="nav-link active"  routerLink="/user/pedido">Pedidos</a></li>
-
-        
-
-
-        
- 
-    
-      </ul>          
+      <ul class="nav">
+        <li class="nav-item" *ngIf="loginService.hasPermission('ADMIN')">
+          <a class="nav-link text-black" routerLink="/admin/cliente">Clientes</a>
+        </li>
+        <li class="nav-item" *ngIf="loginService.hasPermission('ADMIN')">
+          <a class="nav-link text-black" routerLink="/admin/funcionario">Funcionarios</a>
+        </li>
+        <li class="nav-item" *ngIf="loginService.hasPermission('ADMIN')">
+          <a class="nav-link text-black" routerLink="/admin/bebida">Bebidas</a>
+        </li>
+        <li class="nav-item" *ngIf="loginService.hasPermission('ADMIN')">
+          <a class="nav-link text-black" routerLink="/admin/comida">Pizzas</a>
+        </li>
+        <li class="nav-item" *ngIf="loginService.hasPermission('ADMIN') ">
+          <a class="nav-link text-black" routerLink="/admin/pedido">Pedidos</a>
+        </li>
+        <li class="nav-item" *ngIf="loginService.hasPermission('USER')">
+          <a class="nav-link text-black" routerLink="/user/pedido">Pedidos</a>
+        </li>
+      </ul>
     </div>
   </div>
 </nav>
-

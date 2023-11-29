@@ -22,21 +22,31 @@ export class HttpRequestInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(catchError(x => this.errorHandler(x)));
   }
 
-
-
-
   private errorHandler(err: HttpErrorResponse): Observable<any> {
     if (err.status === 401) {
-      alert('401 - tratar');
+      this.showAlert('Problema nas credenciais de acesso', 'Erro 401', 'alert-danger');
       this.router.navigate(['/login']);
       return of(err.message);
     } else if (err.status === 403) {
-      alert('403 - tratar');
+      this.showAlert('Erro nas credenciais', 'Erro 403', 'alert-danger');
       return of(err.message);
     }
+    // Tratamento para outros erros
+    this.showAlert('Ocorreu um erro inesperado', 'Erro', 'alert-danger');
     return throwError(() => err);
   }
 
+  private showAlert(message: string, header: string, cssClass: string): void {
+    const alert = document.createElement('div');
+    alert.className = `alert ${cssClass}`;
+    alert.innerHTML = `<strong>${header}:</strong> ${message}`;
+    document.body.appendChild(alert);
+
+    // Remove o alerta após 5 segundos
+    setTimeout(() => {
+      alert.remove();
+    }, 5000);
+  }
 }
 
 export const httpInterceptorProviders = [

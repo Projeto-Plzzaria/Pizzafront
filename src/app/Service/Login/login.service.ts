@@ -9,16 +9,15 @@ import { jwtDecode, JwtPayload } from "jwt-decode";
   providedIn: 'root'
 })
 export class LoginService {
-
+  getUserRole(): string | undefined {
+    const decodedToken = this.jwtDecode();
+    return decodedToken ? (decodedToken as User).role : undefined;
+  }
   API: string = 'http://localhost:8080/auth/login';
   http = inject(HttpClient);
 
   constructor() { }
 
-
-  logar(login: Login): Observable<User> {
-    return this.http.post<User>(this.API, login);
-  }
 
   deslogar(): Observable<any> {
     return this.http.get<any>(this.API + '/deslogar');
@@ -37,21 +36,35 @@ export class LoginService {
   }
 
 
-  jwtDecode() {
+ 
+
+  hasPermission(role: string): boolean {
+    const user = this.jwtDecode() as User;
+    return user.role === role;
+  }
+
+
+
+  // ...
+
+  logar(login: Login): Observable<User> {
+    return this.http.post<User>(this.API, login);
+  }
+
+  // ...
+
+  jwtDecode(): JwtPayload | undefined {
     let token = this.getToken();
     if (token) {
-      return jwtDecode<JwtPayload>(token);
+      const decodedToken = jwtDecode<JwtPayload>(token);
+      console.log('Decoded Token:', decodedToken); // Adicione esta linha para verificar o token decodificado
+      return decodedToken;
     }
-    return "";
+    return undefined;
   }
-
-  hasPermission(role: string) {
-    let user = this.jwtDecode() as User;
-    if (user.role == role)
-      return true;
-    else
-      return false;
-  }
-
+  
 
 }
+  
+
+

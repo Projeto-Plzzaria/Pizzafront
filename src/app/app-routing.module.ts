@@ -16,11 +16,12 @@ import { rotaguardGuard } from './Components/login/guards/guards.service';
 import { AppComponent } from 'src/app/app.component';
 import { IndexComponent } from './Components/layout/index/index.component';
 
+
 const routes: Routes = [
   { path: "", redirectTo: "login", pathMatch: 'full' },
   { path: "login", component: LoginComponent },
   {
-    path: "admin", component: IndexComponent, canActivate: [rotaguardGuard], children: [
+    path: "admin", component: IndexComponent, canActivate: [rotaguardGuard], data: { expectedRole: 'ADMIN' }, children: [
       { path: 'cliente', component: ClienteComponent },
       { path: 'bebida', component: BebidaComponent },
       { path: 'comida', component: ComidaComponent },
@@ -31,12 +32,15 @@ const routes: Routes = [
     ],
   },
   {
-    path: "user", component: IndexComponent, canActivate: [rotaguardGuard], children: [
+    path: "user", component: IndexComponent, canActivate: [rotaguardGuard], data: { expectedRole: 'USER' }, children: [
       { path: 'pedido', component: PedidoComponent },
     ],
-    
   },
 ];
+
+
+
+
 
 
 @NgModule({
