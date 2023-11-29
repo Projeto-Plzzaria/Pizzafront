@@ -28,7 +28,13 @@ const routes: Routes = [
       { path: 'endereco', component: EnderecosComponent },
       { path: 'bebidaadd', component: BebidaCadastroComponent },
       { path: 'pedido', component: PedidoComponent },
-    ]
+    ],
+  },
+  {
+    path: "user", component: IndexComponent, canActivate: [rotaguardGuard], children: [
+      { path: 'pedido', component: PedidoComponent },
+    ],
+    
   },
 ];
 

@@ -9,6 +9,7 @@ import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FuncionarioService } from 'src/app/Service/Funcionario/funcionario.service';
 import { of } from 'rxjs';
+import { Funcionario } from 'src/app/Models/Funcionario';
 
 describe('FuncionarioCadastroComponent', () => {
   let component: FuncionarioCadastroComponent;
@@ -41,6 +42,21 @@ describe('FuncionarioCadastroComponent', () => {
     component.salvar();
     expect(funcionarioSpy).toHaveBeenCalled();
   });
+
+  it('should emit retorno event when salvar is successful', () => {
+    // Arrange
+    const funcionario: Funcionario = { id: 1, nome: 'Teste', numero: '123', cargo: 'cargo', email: '@e' };
+    const emitSpy = spyOn(component.retorno, 'emit');
+    spyOn(funcionarioService, 'adicionar').and.returnValue(of(funcionario));
+  
+    // Act
+    component.salvar();
+  
+    // Assert
+    expect(emitSpy).toHaveBeenCalledWith(funcionario);
+  });
+  
+
 
  
 });

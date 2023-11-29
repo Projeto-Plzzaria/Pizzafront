@@ -5,6 +5,7 @@ import { BebidaComponent } from './bebida.component';
 
 import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { Bebida } from 'src/app/Models/Bebida';
 
 describe('BebidaComponent', () => {
   let component: BebidaComponent;
@@ -26,5 +27,17 @@ describe('BebidaComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  
+  it('should edit product and open modal when editar is called', () => {
+    const mockProduct = new Bebida(); // Make sure mockProduct is properly initialized
+    const mockIndex = 0;
+  
+    component.editar('modal1', mockProduct, mockIndex);
+  
+    // Your expectations...
+  });
+  
+  
 });
 
