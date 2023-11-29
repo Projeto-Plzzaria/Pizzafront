@@ -10,7 +10,7 @@ import { jwtDecode, JwtPayload } from "jwt-decode";
 })
 export class LoginService {
 
-  API: string = 'http://localhost:8080/api/login';
+  API: string = 'http://localhost:8080/auth/login';
   http = inject(HttpClient);
 
   constructor() { }
@@ -23,8 +23,6 @@ export class LoginService {
   deslogar(): Observable<any> {
     return this.http.get<any>(this.API + '/deslogar');
   }
-
-
 
   addToken(token: string) {
     localStorage.setItem('token', token);

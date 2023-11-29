@@ -24,6 +24,8 @@ import { PedidoComponent } from './Components/pedido/pedido.component';
 import { FuncionarioComponent } from './Components/funcionario/funcionario.component';
 import { ClienteCadastroComponent } from './Components/post/cliente-cadastro/cliente-cadastro.component';
 import { LoginComponent } from './Components/login/login.component';
+import { IndexComponent } from './Components/layout/index/index.component';
+import { httpInterceptorProviders } from './Components/login/interceptor/interceptor.service';
 
 
 
@@ -38,7 +40,7 @@ import { LoginComponent } from './Components/login/login.component';
  
 @NgModule({
 
-  declarations: [AppComponent, NavComponent, BannerComponent, ClienteComponent, ClienteCadastroComponent , BebidaComponent, BebidaComponent, ComidaComponent, EnderecosComponent, BebidaCadastroComponent, ComidaCadastroComponent, FuncionarioCadastroComponent, FuncionarioComponent, EnderecoCadastroComponent, PedidoCadastroComponent, PedidoComponent, LoginComponent],
+  declarations: [AppComponent, NavComponent, BannerComponent, ClienteComponent, ClienteCadastroComponent , BebidaComponent, BebidaComponent, ComidaComponent, EnderecosComponent, BebidaCadastroComponent, ComidaCadastroComponent, FuncionarioCadastroComponent, FuncionarioComponent, EnderecoCadastroComponent, PedidoCadastroComponent, PedidoComponent, LoginComponent, IndexComponent],
 
   imports: [
     BrowserModule,
@@ -51,7 +53,7 @@ import { LoginComponent } from './Components/login/login.component';
     BsDropdownModule.forRoot(),
 
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
